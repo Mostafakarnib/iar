@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="pircs">
+  <ClassDiagramComponents>
+    <Class name="ConfigurationBean" package="org.pirlo.beans" visibility="public" xPosition="-26.0" yPosition="20.0">
+      <Fields>
+        <Field name="templateBean" type="TemplateBean" visibility="private"/>
+        <Field name="utilityBean" type="UtilityBean" visibility="private"/>
+        <Field name="loginBean" type="LoginBean" visibility="private"/>
+        <Field name="configuration" type="Configuration" visibility="private"/>
+        <Field name="lang" type="LangEnum" visibility="package"/>
+        <Field name="configurationFacade" type="ConfigurationFacade" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DashboardBean" package="org.pirlo.beans" visibility="public" xPosition="284.0" yPosition="20.0">
+      <Fields>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="departmentFacade" type="DepartmentFacade" visibility="package"/>
+        <Field name="ticketFacade" type="TicketFacade" visibility="package"/>
+        <Field name="graphList" type="List&lt;Graph&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DepartmentBean" package="org.pirlo.beans" visibility="public" xPosition="466.0" yPosition="20.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="departmentFacade" type="DepartmentFacade" visibility="package"/>
+        <Field name="department" type="Department" visibility="package"/>
+        <Field name="departmentList" type="List&lt;Department&gt;" visibility="package"/>
+        <Field name="DEPARTMENT_DLG" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="LoginBean" package="org.pirlo.beans" visibility="public" xPosition="585.0" yPosition="20.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="operator" type="Operator" visibility="package"/>
+        <Field name="username" type="String" visibility="package"/>
+        <Field name="password" type="String" visibility="package"/>
+        <Field name="pwd1" type="String" visibility="package"/>
+        <Field name="pwd2" type="String" visibility="package"/>
+        <Field name="originalURL" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="NotificationBean" package="org.pirlo.beans" visibility="public" xPosition="757.0" yPosition="0.0">
+      <Fields>
+        <Field name="templateBean" type="TemplateBean" visibility="private"/>
+        <Field name="utilityBean" type="UtilityBean" visibility="private"/>
+        <Field name="loginBean" type="LoginBean" visibility="private"/>
+        <Field name="notificationFacade" type="NotificationFacade" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="notification" type="Notification" visibility="package"/>
+        <Field name="notificationList" type="List&lt;Notification&gt;" visibility="package"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="OperatorBean" package="org.pirlo.beans" visibility="public" xPosition="1410.0" yPosition="71.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="operator" type="Operator" visibility="package"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="package"/>
+        <Field name="pwd1" type="String" visibility="package"/>
+        <Field name="pwd2" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PirloBean" package="org.pirlo.beans" visibility="public" xPosition="1655.0" yPosition="57.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="hospitalFacade" type="HospitalFacade" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="hospital" type="Hospital" visibility="package"/>
+        <Field name="operator" type="Operator" visibility="package"/>
+        <Field name="hospitalList" type="List&lt;Hospital&gt;" visibility="package"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="package"/>
+        <Field name="HOSPITAL_DLG" type="String" visibility="private" isFinal="true"/>
+        <Field name="ADMIN_DLG" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RootCauseBean" package="org.pirlo.beans" visibility="public" xPosition="1906.0" yPosition="71.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="rootCauseAnalysisFacade" type="RootCauseAnalysisFacade" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="rootCauseAnalysis" type="RootCauseAnalysis" visibility="package"/>
+        <Field name="rootCauseAnalysisList" type="List&lt;RootCauseAnalysis&gt;" visibility="package"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TaskBean" package="org.pirlo.beans" visibility="public" xPosition="46.0" yPosition="318.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="taskFacade" type="TaskFacade" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="task" type="Task" visibility="package"/>
+        <Field name="taskList" type="List&lt;Task&gt;" visibility="package"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TemplateBean" package="org.pirlo.beans" visibility="public" xPosition="321.0" yPosition="345.0">
+      <Fields>
+        <Field name="loginBean" type="LoginBean" visibility="private"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="activePage" type="String" visibility="package"/>
+        <Field name="lang" type="LangEnum" visibility="private"/>
+        <Field name="configurationFacade" type="ConfigurationFacade" visibility="package"/>
+        <Field name="locale" type="Locale" visibility="private"/>
+        <Field name="unreadNotificationsCount" type="Integer" visibility="private"/>
+        <Field name="notificationList" type="List&lt;Notification&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TicketBean" package="org.pirlo.beans" visibility="public" xPosition="604.0" yPosition="265.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="package"/>
+        <Field name="loginBean" type="LoginBean" visibility="package"/>
+        <Field name="ticketFacade" type="TicketFacade" visibility="package"/>
+        <Field name="hospitalFacade" type="HospitalFacade" visibility="package"/>
+        <Field name="departmentFacade" type="DepartmentFacade" visibility="package"/>
+        <Field name="operatorFacade" type="OperatorFacade" visibility="package"/>
+        <Field name="commentFacade" type="CommentFacade" visibility="package"/>
+        <Field name="rootCauseAnalysisFacade" type="RootCauseAnalysisFacade" visibility="package"/>
+        <Field name="taskFacade" type="TaskFacade" visibility="package"/>
+        <Field name="notificationFacade" type="NotificationFacade" visibility="package"/>
+        <Field name="ticket" type="Ticket" visibility="package"/>
+        <Field name="ticketList" type="List&lt;Ticket&gt;" visibility="package"/>
+        <Field name="departmentList" type="List&lt;Department&gt;" visibility="package"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="package"/>
+        <Field name="meClassList" type="List&lt;MEClass&gt;" visibility="package"/>
+        <Field name="rootCauseAnalysis" type="RootCauseAnalysis" visibility="package"/>
+        <Field name="comment" type="Comment" visibility="package"/>
+        <Field name="task" type="Task" visibility="package"/>
+        <Field name="notification" type="Notification" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TicketFormBean" package="org.pirlo.beans" visibility="public" xPosition="1007.0" yPosition="0.0">
+      <Fields>
+        <Field name="utilityBean" type="UtilityBean" visibility="private"/>
+        <Field name="lang" type="LangEnum" visibility="package"/>
+        <Field name="configurationFacade" type="ConfigurationFacade" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="UtilityBean" package="org.pirlo.beans" visibility="public" xPosition="973.0" yPosition="363.0">
+      <Fields>
+        <Field name="session" type="Session" visibility="package"/>
+        <Field name="toastrTimeout" type="int" visibility="package" isFinal="true"/>
+        <Field name="tmpList" type="List&lt;String&gt;" visibility="package"/>
+        <Field name="occupationalStatusList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="iaTypeList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="iaCategoryList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="meEnumList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="meTypeEnumList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="operatorTypeEnumList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="langList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="taskStatusList" type="List&lt;SelectItem&gt;" visibility="package"/>
+        <Field name="ticketStatusEnum" type="List&lt;SelectItem&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DonutDataset" package="org.pirlo.dashboard" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="value" type="float" visibility="package"/>
+        <Field name="color" type="String" visibility="package"/>
+        <Field name="highlight" type="String" visibility="package"/>
+        <Field name="label" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Graph" package="org.pirlo.dashboard" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="id" type="String" visibility="package"/>
+        <Field name="type" type="String" visibility="package"/>
+        <Field name="title" type="String" visibility="package"/>
+        <Field name="areaDatasets" type="List&lt;AreaDataset&gt;" visibility="package"/>
+        <Field name="donutDatasets" type="List&lt;DonutDataset&gt;" visibility="package"/>
+        <Field name="labels" type="List&lt;String&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="GraphDTO" package="org.pirlo.dashboard" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="donutDatasetList" type="List&lt;DonutDataset&gt;" visibility="package"/>
+        <Field name="areaDatasetList" type="List&lt;AreaDataset&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Comment" package="org.pirlo.entities" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="operator" type="Operator" visibility="private"/>
+        <Field name="ticket" type="Ticket" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Configuration" package="org.pirlo.entities" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_OPERATOR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="lang" type="LangEnum" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="operator" type="Operator" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Department" package="org.pirlo.entities" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_HOSPITAL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="ticketList" type="List&lt;Ticket&gt;" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="hospital" type="Hospital" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Hospital" package="org.pirlo.entities" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="representativeName" type="String" visibility="private"/>
+        <Field name="representativePhone" type="String" visibility="private"/>
+        <Field name="representativeEmail" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="subscriptionEndDate" type="Date" visibility="private"/>
+        <Field name="subscriptionFees" type="float" visibility="private"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="private"/>
+        <Field name="departmentList" type="List&lt;Department&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="MedicationError" package="org.pirlo.entities" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="errorType" type="MEEnum" visibility="private"/>
+        <Field name="ErrorDetailList" type="List&lt;METypeEnum&gt;" visibility="private"/>
+        <Field name="ticket" type="Ticket" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Notification" package="org.pirlo.entities" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="targetId" type="Long" visibility="private"/>
+        <Field name="title" type="String" visibility="private"/>
+        <Field name="outcome" type="OutcomeEnum" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="type" type="NotificationEnum" visibility="private"/>
+        <Field name="operator" type="Operator" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Operator" package="org.pirlo.entities" visibility="public" xPosition="245.0" yPosition="1296.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_USERNAME" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_HOSPITAL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ROLE_AND_HOSPITAL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_HOSPITAL_AND_EMERGENCY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="type" type="OperatorTypeEnum" visibility="private"/>
+        <Field name="role" type="RoleEnum" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="title" type="String" visibility="private"/>
+        <Field name="recievingEmergencyEmails" type="boolean" visibility="private"/>
+        <Field name="configuration" type="Configuration" visibility="private"/>
+        <Field name="hospital" type="Hospital" visibility="private"/>
+        <Field name="notificationList" type="List&lt;Notification&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RootCauseAnalysis" package="org.pirlo.entities" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_OPERATOR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_TARGET_OPERATOR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_TARGET_OPERATOR_AND_TICKET" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="requestDetails" type="String" visibility="private"/>
+        <Field name="responseDetails" type="String" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="ticket" type="Ticket" visibility="private"/>
+        <Field name="targetOperator" type="Operator" visibility="private"/>
+        <Field name="senderOperator" type="Operator" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Task" package="org.pirlo.entities" visibility="public" xPosition="1007.0" yPosition="1172.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_TASK_BY_OPERATOR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_TASK_BY_OPERATOR_AND_TICKET" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="details" type="String" visibility="private"/>
+        <Field name="summary" type="String" visibility="private"/>
+        <Field name="result" type="String" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="endDate" type="Date" visibility="private"/>
+        <Field name="status" type="TaskStatusEnum" visibility="private"/>
+        <Field name="ticket" type="Ticket" visibility="private"/>
+        <Field name="operator" type="Operator" visibility="private"/>
+        <Field name="taskFeedbackList" type="List&lt;TaskFeedback&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TaskFeedback" package="org.pirlo.entities" visibility="public" xPosition="1410.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="task" type="Task" visibility="private"/>
+        <Field name="targetOperator" type="Operator" visibility="private"/>
+        <Field name="senderOperator" type="Operator" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Ticket" package="org.pirlo.entities" visibility="public" xPosition="1667.0" yPosition="1311.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FIND_ALL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_ID" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_HOSPITAL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_DEPARTMENT_CATEGORY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_TYPE_CATEGORY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_DEPARTMENT_TYPE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_MEDICATION_ERRORS_CATEGORY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_DEPARTMENT_MEDICATION_ERRORS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_MEDICATION_ERRORS_TYPE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_DEPARTMENT_TICKET_STATUS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_TICKET_STATUS_SEVERITY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FIND_BY_MONTH_CATEGORY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="reporterName" type="String" visibility="private"/>
+        <Field name="apAge" type="String" visibility="private"/>
+        <Field name="apmedicalNumber" type="String" visibility="private"/>
+        <Field name="apgender" type="GenderEnum" visibility="private"/>
+        <Field name="apName" type="String" visibility="private"/>
+        <Field name="apOccupationStatus" type="OccupationStatusEnum" visibility="private"/>
+        <Field name="IACategory" type="IACategoryEnum" visibility="private"/>
+        <Field name="insertionDate" type="Date" visibility="private"/>
+        <Field name="summary" type="String" visibility="private"/>
+        <Field name="details" type="String" visibility="private"/>
+        <Field name="status" type="TicketStatusEnum" visibility="private"/>
+        <Field name="severity" type="SeverityEnum" visibility="private"/>
+        <Field name="occuranceDateTime" type="Date" visibility="private"/>
+        <Field name="reporterMobile" type="String" visibility="private"/>
+        <Field name="location" type="String" visibility="private"/>
+        <Field name="reporterID" type="String" visibility="private"/>
+        <Field name="IATypeList" type="List&lt;IATypeEnum&gt;" visibility="private"/>
+        <Field name="department" type="Department" visibility="private"/>
+        <Field name="medicationErrorList" type="List&lt;MedicationError&gt;" visibility="private"/>
+        <Field name="hospital" type="Hospital" visibility="private"/>
+        <Field name="commentList" type="List&lt;Comment&gt;" visibility="private"/>
+        <Field name="taskList" type="List&lt;Task&gt;" visibility="private"/>
+        <Field name="rootCauseAnalysisList" type="List&lt;RootCauseAnalysis&gt;" visibility="private"/>
+        <Field name="operatorList" type="List&lt;Operator&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AbstractFacade" package="org.pirlo.facades" visibility="public" isAbstract="true" xPosition="1773.0" yPosition="2100.0">
+      <Fields>
+        <Field name="entityClass" type="Class&lt;T&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CommentFacade" package="org.pirlo.facades" visibility="public" xPosition="2047.0" yPosition="2108.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ConfigurationFacade" package="org.pirlo.facades" visibility="public" xPosition="20.0" yPosition="2420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DepartmentFacade" package="org.pirlo.facades" visibility="public" xPosition="320.0" yPosition="2420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="HospitalFacade" package="org.pirlo.facades" visibility="public" xPosition="713.0" yPosition="2448.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="MedicationErrorFacade" package="org.pirlo.facades" visibility="public" xPosition="920.0" yPosition="2420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="NotificationFacade" package="org.pirlo.facades" visibility="public" xPosition="1220.0" yPosition="2420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="OperatorFacade" package="org.pirlo.facades" visibility="public" xPosition="1520.0" yPosition="2420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RootCauseAnalysisFacade" package="org.pirlo.facades" visibility="public" xPosition="1534.0" yPosition="2253.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TaskFacade" package="org.pirlo.facades" visibility="public" xPosition="2120.0" yPosition="2420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TaskFeedbackFacade" package="org.pirlo.facades" visibility="public" xPosition="20.0" yPosition="2820.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TicketFacade" package="org.pirlo.facades" visibility="public" xPosition="418.0" yPosition="2738.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="EmailSenderService" package="org.pirlo.services" visibility="public" xPosition="768.0" yPosition="2620.0">
+      <Fields>
+        <Field name="session" type="Session" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Notification" package="org.pirlo.websockets" visibility="public" xPosition="1362.0" yPosition="2720.0">
+      <Fields>
+        <Field name="text" type="String" visibility="private"/>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="showToastr" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="NotificationDecoder" package="org.pirlo.websockets" visibility="public" xPosition="1520.0" yPosition="2820.0">
+      <Fields>
+        <Field name="gson" type="Gson" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="NotificationEncoder" package="org.pirlo.websockets" visibility="public" xPosition="1820.0" yPosition="2820.0">
+      <Fields>
+        <Field name="gson" type="Gson" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="NotificationEndpoint" package="org.pirlo.websockets" visibility="public" xPosition="2120.0" yPosition="2820.0">
+      <Fields>
+        <Field name="map" type="Map&lt;String, Session&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="GenderEnum" package="org.pirlo.enums" visibility="public" xPosition="2106.0" yPosition="1152.0">
+      <Literals>
+        <Literal name="MALE"/>
+        <Literal name="FEMALE"/>
+      </Literals>
+    </Enum>
+    <Enum name="IACategoryEnum" package="org.pirlo.enums" visibility="public" xPosition="2106.0" yPosition="1362.0">
+      <Literals>
+        <Literal name="NEAR_MISS"/>
+        <Literal name="SENTINEL_EVENT"/>
+        <Literal name="PATIENT_DEATH"/>
+      </Literals>
+    </Enum>
+    <Enum name="IATypeEnum" package="org.pirlo.enums" visibility="public" xPosition="-5.0" yPosition="1849.0">
+      <Literals>
+        <Literal name="NEEDLE_PRICK"/>
+        <Literal name="SHARP_INJURY"/>
+        <Literal name="BIOLOGICAL_EXPOSURE"/>
+        <Literal name="BLOOD_SPILL"/>
+        <Literal name="CHEMICAL_SPILL"/>
+        <Literal name="RADIOACTIVE_EXPOSURE"/>
+        <Literal name="FIRE"/>
+        <Literal name="BURN"/>
+        <Literal name="THEFT"/>
+        <Literal name="ADVERSE_DRUG_REACTION"/>
+        <Literal name="PHYSICAL_TRAUMA"/>
+        <Literal name="LACERATION"/>
+        <Literal name="PRESSURE_ULCER"/>
+        <Literal name="EXTRAVASATION"/>
+        <Literal name="PER_OP_COMPLICATION"/>
+        <Literal name="UNINTENTIONAL_EVENT"/>
+        <Literal name="MEDICATION_ERRORS"/>
+        <Literal name="VERBAL_ABUSE"/>
+        <Literal name="PHYSICAL_ABUSE"/>
+        <Literal name="FALL"/>
+        <Literal name="MIS_IDENTIFICATION"/>
+        <Literal name="WRONG_SITE_SURGERY"/>
+        <Literal name="INFANT_DISCHARGE"/>
+        <Literal name="POOR_PATIENT_PREPARATION"/>
+        <Literal name="BREACH_OF_SAFETY"/>
+        <Literal name="BREACH_IN_CONFIDENTIALITY"/>
+        <Literal name="PATIENT_POSITIONING"/>
+        <Literal name="ERROR_IN_DOCUMENTATION"/>
+        <Literal name="UTILITY_SYSTEMS"/>
+        <Literal name="POST_OP_COMPLICATION"/>
+        <Literal name="INFECTION_RELATED_EVENT"/>
+        <Literal name="ANESTHESIA_RELATED_EVENT"/>
+        <Literal name="TRANSFUSION_RELATED_EVENT"/>
+        <Literal name="MEDICAL_EQUIPMENT_RELATED_EVENT"/>
+      </Literals>
+    </Enum>
+    <Enum name="LangEnum" package="org.pirlo.enums" visibility="public" xPosition="510.0" yPosition="1934.0">
+      <Literals>
+        <Literal name="en"/>
+        <Literal name="fr"/>
+      </Literals>
+    </Enum>
+    <Enum name="METypeEnum" package="org.pirlo.enums" visibility="public" xPosition="734.0" yPosition="1649.0">
+      <Literals>
+        <Literal name="WRONG_TIME"/>
+        <Literal name="WRONG_ROUTE"/>
+        <Literal name="WRONG_DRUG"/>
+        <Literal name="WRONG_PATIENT"/>
+        <Literal name="WRONG_DOSE"/>
+        <Literal name="OMISSION_OF_DOSE"/>
+        <Literal name="EXTRA_OVERDOSE"/>
+        <Literal name="WRONG_RATE"/>
+        <Literal name="DRUG_INTERACTION"/>
+      </Literals>
+    </Enum>
+    <Enum name="MonthesEnum" package="org.pirlo.enums" visibility="public" xPosition="1023.0" yPosition="1620.0">
+      <Literals>
+        <Literal name="January"/>
+        <Literal name="February"/>
+        <Literal name="March"/>
+        <Literal name="April"/>
+        <Literal name="May"/>
+        <Literal name="June"/>
+        <Literal name="July"/>
+        <Literal name="August"/>
+        <Literal name="September"/>
+        <Literal name="October"/>
+        <Literal name="November"/>
+        <Literal name="December"/>
+      </Literals>
+    </Enum>
+    <Enum name="NotificationEnum" package="org.pirlo.enums" visibility="public" xPosition="1309.0" yPosition="1792.0">
+      <Literals>
+        <Literal name="TICKET_UPDATE"/>
+        <Literal name="NEW_TICKET"/>
+        <Literal name="COMMENTS"/>
+        <Literal name="ROOT_CAUSE_ANALYSIS"/>
+        <Literal name="ASSIGN_TASKS"/>
+        <Literal name="CHANGE_OWNER"/>
+      </Literals>
+    </Enum>
+    <Enum name="OccupationStatusEnum" package="org.pirlo.enums" visibility="public" xPosition="1307.0" yPosition="1516.0">
+      <Literals>
+        <Literal name="HOSPITAL_STAFF"/>
+        <Literal name="MEDICAL_STAFF"/>
+        <Literal name="RESIDENT_STAFF"/>
+        <Literal name="CASUAL_WORKER"/>
+        <Literal name="STUDENT"/>
+        <Literal name="VISITOR"/>
+        <Literal name="INPATIENT"/>
+        <Literal name="OUTPATIENT"/>
+      </Literals>
+    </Enum>
+    <Enum name="OperatorTypeEnum" package="org.pirlo.enums" visibility="public" xPosition="2120.0" yPosition="1620.0">
+      <Literals>
+        <Literal name="REGULAR_USER"/>
+        <Literal name="QUALITY_MANAGER"/>
+        <Literal name="CEO"/>
+        <Literal name="PATIENT_SAFETY"/>
+        <Literal name="OCCUPATIONAL_HEALTH"/>
+        <Literal name="NURSE_DIRECTOR"/>
+      </Literals>
+    </Enum>
+    <Enum name="OutcomeEnum" package="org.pirlo.enums" visibility="public" xPosition="294.0" yPosition="1972.0">
+      <Literals>
+        <Literal name="NEW_TICKET"/>
+        <Literal name="EDIT_TICKET"/>
+        <Literal name="NOTIFICATIONS"/>
+        <Literal name="TICKET"/>
+        <Literal name="TICKETS"/>
+        <Literal name="DEPARTMENTS"/>
+        <Literal name="OPERATORS"/>
+        <Literal name="HOSPITALS"/>
+        <Literal name="DASHBOARD"/>
+        <Literal name="TASKS"/>
+        <Literal name="ROOT_CAUSE_ANALYSIS"/>
+      </Literals>
+    </Enum>
+    <Enum name="RoleEnum" package="org.pirlo.enums" visibility="public" xPosition="446.0" yPosition="2219.0">
+      <Literals>
+        <Literal name="ROOT"/>
+        <Literal name="ADMIN"/>
+        <Literal name="USER"/>
+      </Literals>
+    </Enum>
+    <Enum name="SeverityEnum" package="org.pirlo.enums" visibility="public" xPosition="762.0" yPosition="2172.0">
+      <Literals>
+        <Literal name="LOW"/>
+        <Literal name="MODERATE"/>
+        <Literal name="SEVERE"/>
+      </Literals>
+    </Enum>
+    <Enum name="TaskStatusEnum" package="org.pirlo.enums" visibility="public" xPosition="920.0" yPosition="2020.0">
+      <Literals>
+        <Literal name="NEW"/>
+        <Literal name="IN_PROGRESS"/>
+        <Literal name="FINISHED"/>
+      </Literals>
+    </Enum>
+    <Enum name="TicketStatusEnum" package="org.pirlo.enums" visibility="public" xPosition="1220.0" yPosition="2020.0">
+      <Literals>
+        <Literal name="NEW"/>
+        <Literal name="OPENNED"/>
+        <Literal name="IN_PROGRESS"/>
+        <Literal name="CLOSED"/>
+      </Literals>
+    </Enum>
+    <Enum name="ToasterEnum" package="org.pirlo.enums" visibility="public" xPosition="1209.0" yPosition="2200.0">
+      <Literals>
+        <Literal name="error"/>
+        <Literal name="success"/>
+        <Literal name="warn"/>
+        <Literal name="info"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.NotificationBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.RootCauseAnalysisFacade" target="org.pirlo.entities.RootCauseAnalysis" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="notificationFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.NotificationFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TaskBean" target="org.pirlo.facades.TaskFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.RootCauseAnalysisFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="configuration" source="org.pirlo.entities.Operator" target="org.pirlo.entities.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.facades.ConfigurationFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="commentFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.CommentFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.OperatorBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.RootCauseBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.OperatorBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.PirloBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.TicketFormBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Task" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Hospital" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.PirloBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Comment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.beans.TemplateBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Task" target="org.pirlo.entities.TaskFeedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="departmentList" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Department" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Department&gt;"/>
+    <HasRelation name="task" source="org.pirlo.beans.TaskBean" target="org.pirlo.entities.Task" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Comment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.RootCauseAnalysis" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configuration" source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.entities.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.enums.IACategoryEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.LoginBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.TaskBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.entities.Configuration" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.NotificationBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticketFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.TicketFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.TaskFeedback" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.dashboard.GraphDTO" target="org.pirlo.dashboard.DonutDataset" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="notificationList" source="org.pirlo.entities.Operator" target="org.pirlo.websockets.Notification" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Notification&gt;"/>
+    <UseRelation source="org.pirlo.entities.Operator" target="org.pirlo.enums.RoleEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.TaskFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="departmentFacade" source="org.pirlo.beans.DashboardBean" target="org.pirlo.facades.DepartmentFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Task" target="org.pirlo.enums.TaskStatusEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.RootCauseAnalysis" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.RootCauseBean" target="org.pirlo.facades.RootCauseAnalysisFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="taskFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.TaskFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.RootCauseAnalysisFacade" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="templateBean" source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.beans.TemplateBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.DepartmentBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.websockets.Notification" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.LoginBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.DepartmentBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.TicketBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rootCauseAnalysis" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.RootCauseAnalysis" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DepartmentBean" target="org.pirlo.entities.Department" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.DashboardBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.enums.OccupationStatusEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.MedicationError" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DepartmentBean" target="org.pirlo.facades.DepartmentFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="commentList" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Comment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Comment&gt;"/>
+    <UseRelation source="org.pirlo.entities.RootCauseAnalysis" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.enums.GenderEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rootCauseAnalysisList" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.RootCauseAnalysis" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RootCauseAnalysis&gt;"/>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.PirloBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.PirloBean" target="org.pirlo.entities.Hospital" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lang" source="org.pirlo.entities.Configuration" target="org.pirlo.enums.LangEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="targetOperator" source="org.pirlo.entities.TaskFeedback" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="department" source="org.pirlo.beans.DepartmentBean" target="org.pirlo.entities.Department" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="donutDatasetList" source="org.pirlo.dashboard.GraphDTO" target="org.pirlo.dashboard.DonutDataset" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;DonutDataset&gt;"/>
+    <HasRelation name="notificationList" source="org.pirlo.beans.NotificationBean" target="org.pirlo.websockets.Notification" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Notification&gt;"/>
+    <UseRelation source="org.pirlo.entities.Hospital" target="org.pirlo.entities.Department" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configurationFacade" source="org.pirlo.beans.TicketFormBean" target="org.pirlo.facades.ConfigurationFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="type" source="org.pirlo.entities.Operator" target="org.pirlo.enums.OperatorTypeEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hospitalFacade" source="org.pirlo.beans.PirloBean" target="org.pirlo.facades.HospitalFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Configuration" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketFormBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Operator" target="org.pirlo.entities.Hospital" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Hospital" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lang" source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.enums.LangEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.DepartmentFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="departmentList" source="org.pirlo.entities.Hospital" target="org.pirlo.entities.Department" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Department&gt;"/>
+    <HasRelation name="ticket" source="org.pirlo.entities.RootCauseAnalysis" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.CommentFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <UseRelation source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="departmentFacade" source="org.pirlo.beans.DepartmentBean" target="org.pirlo.facades.DepartmentFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.NotificationBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorList" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <UseRelation source="org.pirlo.beans.NotificationBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.beans.PirloBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.OperatorBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.TaskBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="apOccupationStatus" source="org.pirlo.entities.Ticket" target="org.pirlo.enums.OccupationStatusEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TaskBean" target="org.pirlo.entities.Task" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hospitalFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.HospitalFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Operator" target="org.pirlo.entities.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lang" source="org.pirlo.beans.TicketFormBean" target="org.pirlo.enums.LangEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.HospitalFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="graphList" source="org.pirlo.beans.DashboardBean" target="org.pirlo.dashboard.Graph" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Graph&gt;"/>
+    <UseRelation source="org.pirlo.beans.TaskBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ErrorDetailList" source="org.pirlo.entities.MedicationError" target="org.pirlo.enums.METypeEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;METypeEnum&gt;"/>
+    <HasRelation name="rootCauseAnalysisList" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.entities.RootCauseAnalysis" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RootCauseAnalysis&gt;"/>
+    <IsRelation name="is" source="org.pirlo.facades.MedicationErrorFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="operatorList" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <UseRelation source="org.pirlo.websockets.Notification" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Operator" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hospital" source="org.pirlo.entities.Operator" target="org.pirlo.entities.Hospital" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DepartmentBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.TemplateBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="type" source="org.pirlo.websockets.Notification" target="org.pirlo.enums.NotificationEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="IATypeList" source="org.pirlo.entities.Ticket" target="org.pirlo.enums.IATypeEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;IATypeEnum&gt;"/>
+    <HasRelation name="departmentFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.DepartmentFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.facades.TicketFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Task" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.entities.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticket" source="org.pirlo.entities.Task" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticket" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Comment" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticket" source="org.pirlo.entities.MedicationError" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.RootCauseBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.MedicationError" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.PirloBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.NotificationBean" target="org.pirlo.beans.TemplateBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="notification" source="org.pirlo.beans.TicketBean" target="org.pirlo.websockets.Notification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Department" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="senderOperator" source="org.pirlo.entities.RootCauseAnalysis" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.enums.SeverityEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="taskList" source="org.pirlo.beans.TaskBean" target="org.pirlo.entities.Task" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Task&gt;"/>
+    <HasRelation name="taskFacade" source="org.pirlo.beans.TaskBean" target="org.pirlo.facades.TaskFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Department" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.facades.DepartmentFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Department" target="org.pirlo.entities.Hospital" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.RootCauseAnalysisFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.PirloBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.OperatorFacade" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TaskBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="task" source="org.pirlo.entities.TaskFeedback" target="org.pirlo.entities.Task" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.LoginBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hospital" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Hospital" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="templateBean" source="org.pirlo.beans.NotificationBean" target="org.pirlo.beans.TemplateBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TemplateBean" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.websockets.Notification" target="org.pirlo.enums.OutcomeEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.dashboard.Graph" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticketList" source="org.pirlo.entities.Department" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Ticket&gt;"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.entities.Department" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="status" source="org.pirlo.entities.Task" target="org.pirlo.enums.TaskStatusEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.websockets.NotificationEndpoint" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.TaskFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <IsRelation name="is" source="org.pirlo.facades.NotificationFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="donutDatasets" source="org.pirlo.dashboard.Graph" target="org.pirlo.dashboard.DonutDataset" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;DonutDataset&gt;"/>
+    <IsRelation name="is" source="org.pirlo.facades.HospitalFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="notification" source="org.pirlo.beans.NotificationBean" target="org.pirlo.websockets.Notification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Task" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.ConfigurationFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="operatorList" source="org.pirlo.beans.OperatorBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <UseRelation source="org.pirlo.entities.Comment" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="taskList" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Task" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Task&gt;"/>
+    <HasRelation name="rootCauseAnalysis" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.entities.RootCauseAnalysis" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="notificationList" source="org.pirlo.beans.TemplateBean" target="org.pirlo.websockets.Notification" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Notification&gt;"/>
+    <HasRelation name="notificationFacade" source="org.pirlo.beans.NotificationBean" target="org.pirlo.facades.NotificationFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.DepartmentFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <UseRelation source="org.pirlo.beans.NotificationBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.CommentFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="IACategory" source="org.pirlo.entities.Ticket" target="org.pirlo.enums.IACategoryEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.entities.Task" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorFacade" source="org.pirlo.beans.OperatorBean" target="org.pirlo.facades.OperatorFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.PirloBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticket" source="org.pirlo.entities.Comment" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.MedicationError" target="org.pirlo.enums.METypeEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="comment" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Comment" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.websockets.Notification" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.NotificationBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.OperatorFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="hospitalList" source="org.pirlo.beans.PirloBean" target="org.pirlo.entities.Hospital" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Hospital&gt;"/>
+    <HasRelation name="taskFeedbackList" source="org.pirlo.entities.Task" target="org.pirlo.entities.TaskFeedback" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;TaskFeedback&gt;"/>
+    <UseRelation source="org.pirlo.facades.ConfigurationFacade" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.enums.LangEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.PirloBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="task" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Task" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.TaskBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.TicketFacade" target="org.pirlo.enums.IACategoryEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.DepartmentFacade" target="org.pirlo.entities.Hospital" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Configuration" target="org.pirlo.enums.LangEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.OperatorBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.PirloBean" target="org.pirlo.facades.HospitalFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorList" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <HasRelation name="status" source="org.pirlo.entities.Ticket" target="org.pirlo.enums.TicketStatusEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.enums.IATypeEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.TicketFacade" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.RootCauseBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="senderOperator" source="org.pirlo.entities.TaskFeedback" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.TaskFeedbackFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="role" source="org.pirlo.entities.Operator" target="org.pirlo.enums.RoleEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TaskBean" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="medicationErrorList" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.MedicationError" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;MedicationError&gt;"/>
+    <UseRelation source="org.pirlo.beans.TemplateBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorList" source="org.pirlo.beans.TaskBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <UseRelation source="org.pirlo.beans.OperatorBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configurationFacade" source="org.pirlo.beans.ConfigurationBean" target="org.pirlo.facades.ConfigurationFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TicketFormBean" target="org.pirlo.enums.LangEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.enums.TicketStatusEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.pirlo.facades.TicketFacade" target="org.pirlo.facades.AbstractFacade"/>
+    <HasRelation name="department" source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Department" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="severity" source="org.pirlo.entities.Ticket" target="org.pirlo.enums.SeverityEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hospital" source="org.pirlo.entities.Department" target="org.pirlo.entities.Hospital" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.LoginBean" target="org.pirlo.facades.OperatorFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.websockets.NotificationEncoder" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorList" source="org.pirlo.beans.PirloBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Task" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.RootCauseBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticketList" source="org.pirlo.beans.TicketBean" target="org.pirlo.entities.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Ticket&gt;"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.websockets.NotificationDecoder" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DashboardBean" target="org.pirlo.enums.TicketStatusEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.LoginBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="targetOperator" source="org.pirlo.entities.RootCauseAnalysis" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorList" source="org.pirlo.entities.Hospital" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+    <HasRelation name="apgender" source="org.pirlo.entities.Ticket" target="org.pirlo.enums.GenderEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.TaskFeedback" target="org.pirlo.entities.Task" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lang" source="org.pirlo.beans.TemplateBean" target="org.pirlo.enums.LangEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="outcome" source="org.pirlo.websockets.Notification" target="org.pirlo.enums.OutcomeEnum" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rootCauseAnalysisFacade" source="org.pirlo.beans.RootCauseBean" target="org.pirlo.facades.RootCauseAnalysisFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.entities.Comment" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.TicketFacade" target="org.pirlo.enums.TicketStatusEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TemplateBean" target="org.pirlo.enums.LangEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.NotificationBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.NotificationBean" target="org.pirlo.websockets.Notification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loginBean" source="org.pirlo.beans.TicketBean" target="org.pirlo.beans.LoginBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configurationFacade" source="org.pirlo.beans.TemplateBean" target="org.pirlo.facades.ConfigurationFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.beans.OperatorBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.TaskFacade" target="org.pirlo.entities.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.DepartmentBean" target="org.pirlo.beans.LoginBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.RootCauseAnalysis" target="org.pirlo.entities.Operator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="utilityBean" source="org.pirlo.beans.OperatorBean" target="org.pirlo.beans.UtilityBean" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TemplateBean" target="org.pirlo.facades.ConfigurationFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.OperatorFacade" target="org.pirlo.enums.RoleEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="departmentList" source="org.pirlo.beans.DepartmentBean" target="org.pirlo.entities.Department" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Department&gt;"/>
+    <UseRelation source="org.pirlo.dashboard.Graph" target="org.pirlo.dashboard.DonutDataset" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.beans.TaskBean" target="org.pirlo.beans.UtilityBean" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.TicketFacade" target="org.pirlo.enums.IATypeEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operator" source="org.pirlo.beans.LoginBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.facades.TicketFacade" target="org.pirlo.enums.MonthesEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ticketFacade" source="org.pirlo.beans.DashboardBean" target="org.pirlo.facades.TicketFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Operator" target="org.pirlo.enums.OperatorTypeEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hospital" source="org.pirlo.beans.PirloBean" target="org.pirlo.entities.Hospital" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.pirlo.entities.Ticket" target="org.pirlo.entities.Department" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rootCauseAnalysisFacade" source="org.pirlo.beans.TicketBean" target="org.pirlo.facades.RootCauseAnalysisFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operatorList" source="org.pirlo.beans.NotificationBean" target="org.pirlo.entities.Operator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Operator&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
