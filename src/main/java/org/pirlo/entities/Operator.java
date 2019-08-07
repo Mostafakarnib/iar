@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
@@ -25,7 +27,17 @@ import org.pirlo.enums.RoleEnum;
 
 @Entity
 @Table(name = "tbl_operator")
+@NamedQueries(
+        {
+            @NamedQuery(name = Operator.FIND_ALL, query = "SELECT o FROM Operator o")
+            ,@NamedQuery(name = Operator.FIND_BY_ID, query = "SELECT o FROM Operator o WHERE o.id = :id")
+            ,@NamedQuery(name = Operator.FIND_BY_USERNAME, query = "SELECT o FROM Operator o WHERE o.username = :username")
+        })
 public class Operator implements Serializable {
+
+    public static final String FIND_ALL = "Operator.findAll";
+    public static final String FIND_BY_ID = "Operator.findById";
+    public final static String FIND_BY_USERNAME = "Operator.FindByUsername";
 
     private static final long serialVersionUID = 1L;
 

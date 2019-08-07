@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <meta charset="utf-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <title>IAR | Log in</title>
+
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+        <!-- Bootstrap 3.3.7 -->
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/bootstrap/css"></h:outputStylesheet>
+
+        <!-- Ionicons -->
+        <h:outputStylesheet name="ionicons.min.css" library="plugins/Ionicons/css"></h:outputStylesheet>
+
+        <!-- Theme style -->
+        <h:outputStylesheet name="AdminLTE.min.css" library="css/general"></h:outputStylesheet>
+
+        <!-- Additional Style -->
+        <h:outputStylesheet name="style.css" library="css/general"></h:outputStylesheet>
+
+        <!-- Font style -->
+        <h:outputStylesheet name="source-sans-pro.css" library="fonts/google-source-sans-pro"></h:outputStylesheet>
+
+        <f:facet name="first">
+            <h:outputScript name="jquery.js" library="primefaces/jquery"></h:outputScript>
+        </f:facet>
+
+        <style>
+            #particles-js{
+                width: 100%;
+                height: 100%;
+
+                background-image: url('#{resource['images/login-wall.jpg']}');
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
+
+            div#thing {
+                position: absolute;
+                top: 0px;
+                z-index: 2;
+                width:400px;
+                margin-left:-200px;
+                left:50%;
+            }
+        </style>
+
+    </h:head>
+
+    <h:body class="hold-transition login-page">
+        <div id="particles-js">
+            <div id="thing" class="login-box" style="position: absolute;">
+                <div class="login-logo" style="color: white;">
+                    <b>IA</b> Reporting System
+                </div>
+                <!-- /.login-logo -->
+                <div class="login-box-body">
+                    <p class="login-box-msg">Sign in to start your session</p>
+
+                    <h:form prependId="false">
+                        <div class="form-group has-feedback">
+                            <h:inputText class="form-control gui-input" value="#{loginBean.username}" />
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <h:inputSecret class="form-control gui-input" value="#{loginBean.password}"/>
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="checkbox icheck">
+
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xs-4">
+                                <h:commandLink value="Sign In" class="btn btn-primary btn-block btn-flat login-btn"
+                                               action="#{loginBean.login()}">
+                                </h:commandLink>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <h:messages styleClass="error-message" globalOnly="true"/>
+                    </h:form>
+
+                </div>
+                <!-- /.login-box-body -->
+            </div>
+            <!-- /.login-box -->
+        </div>
+
+        <!-- Bootstrap 3.3.7 -->
+        <h:outputScript name="bootstrap.min.js" library="plugins/bootstrap/js"></h:outputScript>
+
+        <h:outputScript name="particles.js" library="plugins/particles"></h:outputScript>
+        <h:outputScript name="app.js" library="plugins/particles"></h:outputScript>
+
+
+        <script type="text/javascript">
+            $('.gui-input').keypress(function (e) {
+                if (e.which === 13) {
+                    $('.login-btn').click();
+                    return false;
+                }
+            });
+        </script>
+
+    </h:body>
+</html>
