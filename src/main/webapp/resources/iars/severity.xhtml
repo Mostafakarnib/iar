@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+
+    <cc:interface>
+        <cc:attribute name="workingId" required="true" />
+        <cc:attribute name="idsToRender"></cc:attribute>
+        <cc:attribute name="title"></cc:attribute>
+        <cc:attribute name="onEvent" default="onDelete"></cc:attribute>
+        <cc:attribute name="listener" required="true" method-signature="void listener()" />
+    </cc:interface>
+
+    <cc:implementation>
+        <div id="#{cc.attrs.workingId}" class="popover left">
+            <div class="arrow"></div>
+            <h3 class="popover-title">#{cc.attrs.title}</h3>
+            <div class="popover-content">
+
+                <h:commandLink styleClass="btn btn-danger btn-sm delete"> #{bundle.DELETE}
+                    <f:ajax listener="#{cc.attrs.listener}"
+                            render="#{cc.attrs.idsToRender}" onevent="#{cc.attrs.onEvent}"></f:ajax>
+                </h:commandLink>
+                <a class="btn btn-default btn-sm cancel-delete">#{bundle.CANCEL} </a>
+            </div>
+        </div>
+    </cc:implementation>
+</html>

@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+    <div class="modal fade operator-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <h:panelGroup  id="operator_panel">
+
+                    <div class="modal-header">
+                        <h:panelGroup rendered="#{operatorBean.operator.id == null}">
+                            <h:outputText class="modal-title h3" value="#{bundle.ADD_OPERATOR}" />
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{operatorBean.operator.id != null}">
+                            <h:outputText class="modal-title h3" value="#{bundle.EDIT_OPERATOR}" />
+                        </h:panelGroup>
+
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h:outputText class="text-bold" value="#{bundle.TITLE}:" />
+                                    <h:inputText class="form-control input-sm" id="txt_operator_title"
+                                                 value="#{operatorBean.operator.title}" required="true"/>
+                                    <h:message for="txt_operator_title" styleClass="error-message" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h:outputText class="text-bold" value="#{bundle.USERSNAME}:" />
+                                    <h:inputText class="form-control input-sm" id="txt_operator_username"
+                                                 value="#{operatorBean.operator.username}" required="true"/>
+                                    <h:message for="txt_operator_username" styleClass="error-message" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h:outputText class="text-bold" value="#{bundle.EMAIL}:" />
+                                    <h:inputText class="form-control input-sm" id="txt_operator_email"
+                                                 value="#{operatorBean.operator.email}" required="true"/>
+                                    <h:message for="txt_operator_email" styleClass="error-message" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h:outputText class="text-bold" value="#{bundle.TYPE}:" />
+                                    <h:selectOneMenu class="form-control select2 input-sm" id="cb_operator_type"
+                                                     converter="omnifaces.SelectItemsConverter"
+                                                     value="#{operatorBean.operator.type}" required="true" >
+                                        <f:selectItem itemValue="#{null}" itemLabel="#{bundle.CHOOSE}" />
+                                        <f:selectItems value="#{utilityBean.operatorTypeEnumList}" var="type"
+                                                       itemValue="#{type}" itemLabel="#{type.label}" />
+                                    </h:selectOneMenu>
+                                    <h:message for="cb_operator_type" styleClass="error-message" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h:panelGroup rendered="#{operatorBean.operator.id == null}">
+
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.PASSWORD}:" />
+                                        <h:inputText class="form-control input-sm" id="txt_operator_password"
+                                                     value="#{operatorBean.operator.password}" required="true"/>
+                                        <h:message for="txt_operator_password" styleClass="error-message" />
+                                    </div>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary pull-right"
+                                       action="#{operatorBean.saveOperator()}">
+                            <f:ajax execute="operator_panel" render="operator_panel operators_table" />
+                        </h:commandLink>
+                    </div>
+                </h:panelGroup>
+            </div>
+        </div>
+    </div>
+</ui:composition>

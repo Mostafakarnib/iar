@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="modal fade password-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h:outputText class="modal-title" value="#{bundle.CHANGE_PASSWORD}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:form prependId="false">
+                        <h:panelGroup id="modal_password_panel">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <b><h:outputText value="#{bundle.PASSWORD}:" /></b>
+
+                                                <h:inputText class="form-control" id="modal_txt_pass" 
+                                                             value="#{loginBean.pwd1}"
+                                                             required="true"/>
+                                                <h:message for="modal_txt_pass" styleClass="error-message" />
+                                            </div>                    
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <b><h:outputText value="#{bundle.CONFIRM_PASSWORD}" /></b>
+
+                                                <h:inputText class="form-control" id="modal_txt_cpass" 
+                                                             value="#{loginBean.pwd2}"
+                                                             required="true"/>
+                                                <h:message for="modal_txt_cpass" styleClass="error-message" />
+                                            </div>                    
+                                        </div>
+                                    </div>
+
+                                    <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary sharp" 
+                                                   action="#{loginBean.changePassword()}">
+                                        <f:ajax execute="modal_password_panel" render="modal_password_panel" />
+                                    </h:commandLink>
+
+                                </div>
+                            </div>
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ui:composition>

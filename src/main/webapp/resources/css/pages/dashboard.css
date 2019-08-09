@@ -1,0 +1,77 @@
+
+
+.graph-settings {
+    background: #ddd;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -170px;
+    transition: all 0.2s ease-in-out;
+}
+
+.chart {
+    padding-left: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.graph-settings.active {
+    top: 0;
+}
+
+.graph-type {
+    margin-bottom: 10px;
+}
+
+.graph-type a {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    border: 1px solid white;
+    padding: 4px;
+    text-align: center;
+    margin: 2px;
+}
+
+.graph-type img {
+    height: 25px;
+    width: 27px;
+    display: block;
+    position: relative;
+    left: 4px;
+    bottom: 2px;
+}
+
+.box-body {
+    overflow: hidden;
+}
+
+.box-tools {
+    float: left;
+}
+
+.graph-settings .btn {
+    padding: 3px 5px;
+}
+
+.graph-footer {
+    margin-top: 10px;
+}
+
+.no-indicators {
+    background: #eee none repeat scroll 0 0;
+    padding: 5px;
+    text-align: center;
+}
+
+.indicator .switch {
+    float: left;
+    position: relative;
+    top: -4px;
+    width: 70px;
+}
+
+#content_wrapper > section {
+    padding: 60px 10px !important;
+}

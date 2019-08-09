@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-users"></i> #{bundle.OPERATORS}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="box box-primary ">
+                    <div class="box-header">
+                        <h:outputText class="text-bold h4" value="#{bundle.OPERATORS_LIST}" />
+                        <h:commandLink value="#{bundle.ADD_OPERATOR}" class="btn btn-primary btn-sm pull-right"
+                                       onclick="$('.operator-dlg').modal('show')"
+                                       action="#{operatorBean.selectOperator(null)}">
+                            <f:ajax render="operator_panel" />
+                        </h:commandLink>
+                        <ui:include src="/snippets/modals/operator-modal.xhtml" />
+                    </div>
+                    <div class="box-body ">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                                 rowIndexVar="index" id="operators_table" value="#{operatorBean.operatorList}"
+                                                 var="operator" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                                 paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                                                 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                                        <p:column headerText="#" width="25">
+                                            <h:outputText class="" value="#{index + 1}." />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.TITLE}" width="75">
+                                            <h:outputText value="#{operator.title}" />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.USERSNAME}" width="75">
+                                            <h:outputText value="#{operator.username}" />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.TYPE}" width="75" >
+                                            <h:outputText value="#{bundle[operator.type]}" />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.EMAIL}" width="125" >
+                                            <h:outputText value="#{operator.email}" />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.CONTROL}" width="75" >
+                                            <div class="btn-group">
+                                                <h:commandLink class="btn btn-info"
+                                                               onclick="$('.operator-dlg').modal('show')"
+                                                               action="#{operatorBean.selectOperator(operator)}">
+                                                    <f:ajax render="operator_panel" />
+                                                    <i class="fa fa-edit" />
+                                                </h:commandLink>
+                                                <h:commandLink class="btn btn-warning"
+                                                               action="#{operatorBean.editOperatorPassword(operator)}">
+                                                    <f:ajax render="opertorpwd_panel" />
+                                                    <i class="fa fa-key" />
+                                                </h:commandLink>
+                                                <h:commandLink class="btn btn-danger open-popover"
+                                                               onclick="openDeletePopover(this, 'delete-operator')"
+                                                               action="#{operatorBean.selectOperator(operator)}">
+                                                    <i class="fa fa-remove open-popover" />
+                                                    <f:ajax render="operator_panel" />
+                                                </h:commandLink>
+                                            </div>
+                                        </p:column>
+                                    </p:dataTable>
+                                    <ui:include src="/snippets/modals/password-modal.xhtml" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
