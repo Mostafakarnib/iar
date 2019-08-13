@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"      
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+    <ui:composition template="/template/template.xhtml"> 
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-cogs"></i> #{bundle.MANAGEMENT_PANEL}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <div class="box-group">
+                            <h:outputText value="#{bundle.HOSPITAL_LIST}" class="h4 text-bold" style="margin-top: 10px;" />
+                            <h:commandLink value="#{bundle.ADD_HOSPITAL}" class="btn btn-primary pull-right" 
+                                           onclick="$('.hospital-dlg').modal('show');" action="#{pirloBean.selectHospital(null)}">
+                                <f:ajax render="modal_hospital_panel" />
+                            </h:commandLink>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="table-responsive">
+                            <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                         rowIndexVar="index" id="hospitals_table" value="#{pirloBean.hospitalList}" 
+                                         var="hospital"  emptyMessage="#{bundle.EMPTY_TABLE}"
+                                         paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+                                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                                <p:column headerText="#" width="50">                            
+                                    <h:outputText class="" value="#{index + 1}." />                            
+                                </p:column>
+                                <p:column headerText="#{bundle.HOSPITAL_NAME}" width="250">                            
+                                    <h:outputText value="#{hospital.name}" />                            
+                                </p:column>
+                                <p:column headerText="#{bundle.HOSPITAL_ADDRESS}">
+                                    <h:outputText value="#{hospital.address}" />
+                                </p:column>
+                                <p:column headerText="#{bundle.SUBSCRIPTION_FEES}" width="100">
+                                    <h:outputText value="#{hospital.subscriptionFees}$" />
+                                </p:column>
+                                <p:column headerText="#{bundle.SUBSCRIPTION_END_DATE}" width="100">
+                                    <h:outputText value="#{hospital.subscriptionEndDate}" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column headerText="#{bundle.REPRESENTATIVE_NAME}" width="200">
+                                    <h:outputText value="#{hospital.representativeName}" />
+                                </p:column>
+                                <p:column headerText="#{bundle.REPRESENTATIVE_PHONE}" width="175">
+                                    <h:outputText value="#{hospital.representativePhone}" />
+                                </p:column>
+                                <p:column headerText="#{bundle.REPRESENTATIVE_EMAIL}" width="250">
+                                    <h:outputText value="#{hospital.representativeEmail}" />
+                                </p:column>
+
+                                <p:column headerText="#{bundle.CONTROL}" width="150">
+                                    <div class="btn-group">                            
+                                        <h:commandLink styleClass="btn btn-info" title="Edit Hospital Information"
+                                                       action="#{pirloBean.selectHospital(hospital)}" 
+                                                       onclick="$('.hospital-dlg').modal('show');">
+                                            <i class="fa fa-edit" />
+                                            <f:ajax render="modal_hospital_panel" />
+                                        </h:commandLink>
+                                        <h:commandLink styleClass="btn btn-success" title="Hospital Admins"
+                                                       action="#{pirloBean.selectHospital(hospital)}" 
+                                                       onclick="$('.admin-dlg').modal('show');" >
+                                            <i class="fa fa-users" />
+                                            <f:ajax render="add_admin_panel admins_table" />
+                                        </h:commandLink>
+                                        <h:commandLink value="" styleClass="btn btn-danger open-popover" 
+                                                       title="Delete Hospital"
+                                                       action="#{pirloBean.selectHospital(hospital)}"
+                                                       onclick="openDeletePopover(this, 'delete-hospital')">
+                                            <i class="fa fa-remove open-popover" />
+                                            <f:ajax />
+                                        </h:commandLink>
+                                    </div>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                        <iars:delete workingId="delete-hospital" idsToRender="hospitals_table"
+                                     listener="#{pirloBean.deleteHospital()}">
+                        </iars:delete>
+                    </div>
+                </div>
+            </h:form>
+            <ui:include src="/snippets/modals/hospital-modal.xhtml" />
+            <ui:include src="/snippets/modals/admin-modal.xhtml" />
+        </ui:define>        
+
+    </ui:composition>
+
+</html>
+
