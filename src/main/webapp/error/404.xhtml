@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>    
+
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>We've got some trouble | 404 - Resource not found</title>
+        
+        <h:outputStylesheet name="error-pages.css" library="css/pages"></h:outputStylesheet>  
+
+    </h:head>
+
+    <h:body>
+        <div class="cover">
+            <h1>Resource not found <small>Error 404</small></h1>
+            <p class="lead">The requested resource could not be found but may be available again in the future.</p>
+            <p class="lead">
+                <h:link rendered="#{loginBean.operator.role == 'ROOT'}" outcome="hospitals" value="Go To Main Page" />
+                <h:link rendered="#{loginBean.operator.role == 'ADMIN'}" outcome="dashboard" value="Go To Main Page" />
+                <h:link rendered="#{loginBean.operator.role == 'USER'}" outcome="tickets" value="Go To Main Page" /> 
+            </p>
+        </div>
+
+        <footer>                
+            <strong>Copyright © 2017 <a>Pirlo</a>.</strong> All rights
+            reserved.
+        </footer>
+
+
+
+    </h:body>
+</html>
