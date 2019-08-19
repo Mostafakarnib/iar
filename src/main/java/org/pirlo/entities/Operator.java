@@ -32,12 +32,14 @@ import org.pirlo.enums.RoleEnum;
             @NamedQuery(name = Operator.FIND_ALL, query = "SELECT o FROM Operator o")
             ,@NamedQuery(name = Operator.FIND_BY_ID, query = "SELECT o FROM Operator o WHERE o.id = :id")
             ,@NamedQuery(name = Operator.FIND_BY_USERNAME, query = "SELECT o FROM Operator o WHERE o.username = :username")
+            ,@NamedQuery(name = Operator.FIND_BY_HOSPITAL, query = "SELECT o FROM Operator o WHERE o.hospital = :hospital")
         })
 public class Operator implements Serializable {
 
     public static final String FIND_ALL = "Operator.findAll";
     public static final String FIND_BY_ID = "Operator.findById";
     public final static String FIND_BY_USERNAME = "Operator.FindByUsername";
+    public final static String FIND_BY_HOSPITAL = "Operator.FindByHospital";
 
     private static final long serialVersionUID = 1L;
 

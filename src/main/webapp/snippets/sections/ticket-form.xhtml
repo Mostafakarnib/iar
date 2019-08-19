@@ -1,0 +1,211 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+    <h:panelGroup id="ticket_panel">
+        <div class="box box-success">
+            <div class="box-header">
+                <h:outputText class="text-bold h4" value="#{bundle.BASIC_INFORMATION}" />
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.ID_OF_PERSON_FILLING_THIS_FORM}:" />
+                            <h:inputText id="txt_reporter_id" required="true" class="form-control input-sm" value="#{ticketBean.ticket.reporterID}"/>
+                            <h:message for="txt_reporter_id" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.NAME_OF_PERSON_FILLING_THIS_FORM}:" />
+                            <h:inputText id="txt_reporter_name" required="true" class="form-control input-sm" value="#{ticketBean.ticket.reporterName}" />
+                            <h:message for="txt_reporter_name" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.MOBILE_OF_PERSON_FILLING_THIS_FORM}:" />
+                            <h:inputText id="txt_reporter_mobile" required="true" class="form-control input-sm" value="#{ticketBean.ticket.reporterMobile}" />
+                            <h:message for="txt_reporter_mobile" styleClass="error-message" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.NAME_OF_PERSON_AFFECTED_BY_THE_ACCIDENT}:" />
+                            <h:inputText id="txt_ap_name" required="true" class="form-control input-sm" value="#{ticketBean.ticket.apName}" />
+                            <h:message for="txt_ap_name" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.MEDICAL_NUMBER}:" />
+                            <h:inputText id="txt_ap_medical_number" required="true" class="form-control input-sm" value="#{ticketBean.ticket.apmedicalNumber}" />
+                            <h:message for="txt_ap_medical_number" styleClass="error-message" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.AGE}:" />
+                            <h:inputText id="txt_ap_age" required="true" class="form-control input-sm" value="#{ticketBean.ticket.apAge}" />
+                            <h:message for="txt_ap_age" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.OCCUPATIONAL_STATUS_OF_AFFECTED_PERSON}:" />
+                            <h:selectOneMenu id="cb_ap_occ_status" required="true"
+                                             class="form-control select2"
+                                             value="#{ticketBean.ticket.apOccupationStatus}"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItem itemValue="#{null}" itemLabel="#{bundle.CHOOSE}" />
+                                <f:selectItems value="#{utilityBean.occupationalStatusList}" var="status"
+                                               itemValue="#{status}" itemLabel="#{status.label}" />
+                            </h:selectOneMenu>
+                            <h:message for="cb_ap_occ_status" styleClass="error-message" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-danger">
+            <div class="box-header">
+                <h:outputText class="text-bold h4" value="#{bundle.INCIDENT_INFORMATION}" />
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.DATE}:" />
+                            <h:inputText id="txt_date" required="true" value="#{ticketBean.ticket.occuranceDateTime}"
+                                         class="form-control input-sm datetimepicker text-bold fa-0x" >
+                                <f:convertDateTime pattern="mm/dd/yyyy hh:mm" />
+                            </h:inputText>
+                            <h:message for="txt_date" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.DEPARTMENT}:" />
+                            <h:selectOneMenu id="cb_department" required="true"
+                                             class="form-control select2"
+                                             value="#{ticketBean.ticket.department}"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItem itemValue="#{null}" itemLabel="#{bundle.CHOOSE}" />
+                                <f:selectItems value="#{ticketBean.departmentList}" var="department"
+                                               itemValue="#{department}" itemLabel="#{department.name}" />
+                            </h:selectOneMenu>
+                            <h:message for="cb_department" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.LOCATION}:" />
+                            <h:inputText id="txt_location" required="true" class="form-control input-sm" value="#{ticketBean.ticket.location}" />
+                            <h:message for="txt_location" styleClass="error-message" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.CATEGORY}:" />
+                            <h:selectOneMenu id="cb_ia_category" required="true"
+                                             class="form-control select2 input-sm"
+                                             value="#{ticketBean.ticket.IACategory}"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItem itemValue="#{null}" itemLabel="#{bundle.CHOOSE}" />
+                                <f:selectItems value="#{utilityBean.iaCategoryList}" var="category"
+                                               itemValue="#{category}" itemLabel="#{bundle[category]}" />
+                            </h:selectOneMenu>
+                            <h:message for="cb_ia_category" styleClass="error-message" />
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.TYPE}:" />
+                            <h:selectManyMenu id="cb_type" required="true"
+                                              class="form-control input-sm select2-multi"
+                                              value="#{ticketBean.ticket.IATypeList}"
+                                              converter="omnifaces.SelectItemsConverter">
+                                <f:selectItems value="#{utilityBean.iaTypeList}" var="type"
+                                               itemValue="#{type}" itemLabel="#{type.label}" />
+                            </h:selectManyMenu>
+                            <h:message for="cb_type" styleClass="error-message" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h:outputText class="h5 text-bold" value="#{bundle.MEDICATION_ERRORS}:" />
+
+                        <div class="row" style="margin-left: 5px;margin-right: 3px;margin-top: 5px;">
+                            <div class="panel-group" id="accordion">
+
+                                <ui:repeat var="meClass" value="#{ticketBean.meClassList}" varStatus="indexVar">
+                                    <div class="panel box box-#{utilityBean.getColorClass(indexVar.index)}">
+
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" href="##{meClass.me.value}">
+                                                <h:outputText class="text-black text-bold" value="#{meClass.me.label}" />
+                                            </a>
+                                        </div>
+
+                                        <div id="#{meClass.me.value}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <ui:repeat var="meTypeClass" value="#{meClass.meTypeClassList}">
+                                                        <div class="col-lg-2">
+                                                            <div class="form-group">
+                                                                <label>
+                                                                    <div class="icheckbox_minimal-blue" aria-checked="false"
+                                                                         aria-disabled="false" style="position: relative;">
+                                                                        <h:selectBooleanCheckbox value="#{meTypeClass.selected}" class="check"/>
+                                                                        <h:outputText value="#{meTypeClass.meType.label}"
+                                                                                      style="margin-left: 10px !important;" />
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </ui:repeat>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <h:outputText class="text-bold" value="#{bundle.DETAILS}:" />
+                            <h:inputTextarea id="txt_summary" required="true" rows="7" class="form-control input-sm"
+                                             value="#{ticketBean.ticket.details}" />
+                            <h:message for="txt_summary" styleClass="error-message" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary" action="#{ticketBean.saveTicket()}">
+                    <f:ajax execute="ticket_panel" render="ticket_panel" />
+                </h:commandLink>
+            </div>
+
+        </div>
+    </h:panelGroup>
+</ui:composition>

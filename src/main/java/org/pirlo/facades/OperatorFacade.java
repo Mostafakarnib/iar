@@ -5,9 +5,11 @@
  */
 package org.pirlo.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.pirlo.entities.Hospital;
 import org.pirlo.entities.Operator;
 
 @Stateless
@@ -34,6 +36,12 @@ public class OperatorFacade extends AbstractFacade<Operator> {
 
         }
         return null;
+    }
+
+    public List<Operator> findByHospital(Hospital hospital) {
+        return em.createNamedQuery(Operator.FIND_BY_HOSPITAL, Operator.class)
+                .setParameter("hospital", hospital)
+                .getResultList();
     }
 
 }

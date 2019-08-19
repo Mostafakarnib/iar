@@ -19,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -33,7 +35,13 @@ import org.pirlo.enums.TicketStatusEnum;
 
 @Entity
 @Table(name = "tbl_ticket")
+@NamedQueries(
+        {
+            @NamedQuery(name = Ticket.FIND_BY_HOSPITAL, query = "SELECT t FROM Ticket t WHERE t.hospital = :hospital")
+        })
 public class Ticket implements Serializable {
+
+    public static final String FIND_BY_HOSPITAL = "Ticket.findByHospital";
 
     private static final long serialVersionUID = 1L;
 
