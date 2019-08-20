@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-list"></i> #{bundle.TICKETS}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="table-responsive">
+                    <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                 rowIndexVar="index" id="tickets_table" value="#{ticketBean.ticketList}"
+                                 var="ticket" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                 paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                                 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                        <p:column headerText="#" width="50">
+                            <h:outputText class="" value="#{index + 1}." />
+                        </p:column>
+                        <p:column headerText="#{bundle.TICKET_ID}">
+                            <h:outputText value="##{ticket.id}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.STATUS}">
+                            <h:commandLink value="#{bundle[ticket.status]}" styleClass="label label-success"
+                                           title="Edit Ticket Status"
+                                           action="#{ticketBean.selectTicket(ticket)}"
+                                           onclick="openEditStatusPopover(this, 'edit-ticket-status')">
+                                <f:ajax />
+                            </h:commandLink>
+                        </p:column>
+                        <p:column headerText="#{bundle.SEVERITY}">
+                            <h:outputText class="label label-danger" value="#{bundle[ticket.severity]}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.DATE}">
+                            <h:outputText value="#{ticket.occuranceDateTime}" >
+                                <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="#{bundle.CONTROL}" width="300">
+                            <div class="btn-group">
+                                <h:commandLink class="btn btn-primary" action="#{ticketBean.selectTicket(ticket)}"
+                                               onclick="$('.detailed-ticket-dlg').modal('show')">
+                                    <f:ajax render="detailed_ticket_panel" />
+                                    <i class="fa fa-info" />
+                                </h:commandLink>
+                                <h:link styleClass="btn btn-success" outcome="ticket" title="Ticket Information">
+                                    <i class="fa fa-ticket"/>
+                                    <f:param name="id" value="#{ticket.id}"></f:param>
+                                </h:link>
+                                <h:commandLink styleClass="btn btn-info"
+                                               rendered="#{ticketBean.loginBean.operator.type =='QUALITY_MANAGER'}"
+                                               onclick="$('.viewers-dlg').modal('show')"
+                                               action="#{ticketBean.selectTicket(ticket)}"
+                                               title="Ticket Viewers">
+                                    <i class="fa fa-users" />
+                                    <f:ajax render="viewers_panel" />
+                                </h:commandLink>
+                                <h:commandLink value="" styleClass="btn btn-warning open-popover" title="Request Update"
+                                               rendered="#{ticketBean.loginBean.operator.type =='QUALITY_MANAGER'}"
+                                               action="#{ticketBean.selectTicket(ticket)}"
+                                               onclick="openRequestTicketUpdatePopover(this, 'request-ticket-update')">
+                                    <i class="fa fa-refresh open-popover" />
+                                    <f:ajax />
+                                </h:commandLink>
+                                <h:link class="btn btn-primary" outcome="edit-ticket"
+                                        rendered="#{ticketBean.loginBean.operator.type =='QUALITY_MANAGER'}">
+                                    <i class="fa fa-edit" />
+                                    <f:param name="id" value="#{ticket.id}" />
+                                </h:link>
+                                <h:commandLink value="" styleClass="btn btn-danger open-popover" title="Delete Ticket"
+                                               rendered="#{ticketBean.loginBean.operator.type =='QUALITY_MANAGER'}"
+                                               action="#{ticketBean.selectTicket(ticket)}"
+                                               onclick="openDeletePopover(this, 'delete-ticket')">
+                                    <i class="fa fa-remove open-popover" />
+                                    <f:ajax />
+                                </h:commandLink>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
