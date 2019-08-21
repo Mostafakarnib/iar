@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-ticket"></i> <h:outputText value="Ticket ##{ticketBean.ticket.id}" />
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active" >
+                            <a data-toggle="tab" href="#tab_info">#{bundle.BASIC_INFORMATION}</a>
+                        </li>
+                        <h:panelGroup rendered="#{ticketBean.loginBean.operator.type=='QUALITY_MANAGER'}">
+                            <li class="" >
+                                <a data-toggle="tab" href="#tab_root">#{bundle.ROOT_CAUSE_ANALYSIS}</a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#tab_tasks">#{bundle.TASKS}</a>
+                            </li>
+                        </h:panelGroup>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div id="tab_info" class="tab-pane fade in active">
+                            <ui:include src="" />
+                        </div>
+
+                    </div>
+
+                </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
