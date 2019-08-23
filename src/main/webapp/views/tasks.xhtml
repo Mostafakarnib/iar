@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-list"></i> #{bundle.TASKS}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="table-responsive">
+                    <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                 rowIndexVar="index" id="tasks_table"
+                                 value="#{taskBean.taskList}"
+                                 var="task" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                 paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                                 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                        <p:column headerText="#" width="50">
+                            <h:outputText class="" value="#{index + 1}." />
+                        </p:column>
+                        <p:column headerText="#{bundle.OPERATORS}" width="75"
+                                  rendered="#{taskBean.loginBean.operator.type == 'QUALITY_MANAGER'}">
+                            <h:outputText
+                                value="#{task.operator.username}">
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="#{bundle.STATUS}" width="50">
+                            <h:commandLink id="bt_status_task"
+                                           action="#{taskBean.toggleTaskStatus(task)}"
+                                           value="#{bundle[task.status]}"
+                                           class="#{task.status == 'NEW' ? 'btn btn-info btn-sm':''}
+                                           #{task.status == 'IN_PROGRESS' ? 'btn btn-success btn-sm':''}
+                                           #{task.status == 'FINISHED' ? 'btn btn-danger btn-sm':''}">
+                                <f:ajax render="bt_status_task" />
+                            </h:commandLink>
+                        </p:column>
+                        <p:column headerText="#{bundle.DETAILS}" width="150">
+                            <h:outputText value="#{task.details}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.RESULT_TASK}" width="150">
+                            <h:outputText value="#{task.result}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.END_DATE}" width="100">
+                            <h:outputText value="#{task.endDate}">
+                                <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                            </h:outputText>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+                <iars:delete workingId="delete-task" idsToRender="tasks_table"
+                             listener="#{taskBean.deleteTask()}">
+                </iars:delete>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
