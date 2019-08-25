@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="modal fade detailed-ticket-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" style="width: 60%;" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h:outputText class="modal-title" value="#{bundle.TICKET_DETAILED_INFORMATION}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:panelGroup id="detailed_ticket_panel">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <dl>
+                                    <dt><h:outputText class="text-bold" value="#{bundle.ID_OF_PERSON_FILLING_THIS_FORM}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.reporterID}
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.NAME_OF_PERSON_FILLING_THIS_FORM}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.reporterName}
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.MOBILE_OF_PERSON_FILLING_THIS_FORM}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.reporterMobile}
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.NAME_OF_PERSON_AFFECTED_BY_THE_ACCIDENT}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.apName}
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.MEDICAL_NUMBER}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.apmedicalNumber}
+                                    </dd>                                   
+                                </dl>
+                            </div>
+                            <div class="col-lg-4">
+                                <dl>                                     
+                                    <dt><h:outputText class="text-bold" value="#{bundle.AGE}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.apAge}
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.OCCUPATIONAL_STATUS_OF_AFFECTED_PERSON}" /></dt>
+                                    <dd>
+                                        #{bundle[ticketBean.ticket.apOccupationStatus]}
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.DATE}" /></dt>
+                                    <dd>
+                                        <h:outputText value="#{ticketBean.ticket.occuranceDateTime}">
+                                            <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                                        </h:outputText>
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.LOCATION}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.location}    
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.CATEGORY}" /></dt>
+                                    <dd>
+                                        #{bundle[ticketBean.ticket.IACategory]}
+                                    </dd>                                    
+                                </dl>
+                            </div>
+                            <div class="col-lg-4">
+                                <dl>
+                                    <dt><h:outputText class="text-bold" value="#{bundle.TYPE}" /></dt>
+                                    <dd>
+                                        <ui:repeat value="#{ticketBean.ticket.IATypeList}" var="type" varStatus="statusVar">
+                                            <h:panelGroup rendered="#{statusVar.index == (ticketBean.ticket.IATypeList.size() - 1)}">
+                                                #{bundle[type]}
+                                            </h:panelGroup>
+                                            <h:panelGroup rendered="#{statusVar.index != (ticketBean.ticket.IATypeList.size() - 1)}">
+                                                #{bundle[type]},
+                                            </h:panelGroup>
+                                        </ui:repeat>
+                                    </dd>
+                                    <br />
+                                    <dt><h:outputText class="text-bold" value="#{bundle.MEDICATION_ERRORS}" /></dt>                                    
+                                    <ui:repeat value="#{ticketBean.ticket.medicationErrorList}" var="me" varStatus="statusVar">                                            
+                                        <dd>
+                                            <b>#{bundle[me.errorType]}: </b>                                            
+                                            <ui:repeat value="#{me.errorDetailList}" var="meType" varStatus="statusVar2">                                               
+                                                #{bundle[meType]}                                               
+                                                <h:panelGroup rendered="#{statusVar2.index != (me.errorDetailList.size() - 1)}">
+                                                    ,
+                                                </h:panelGroup>
+                                            </ui:repeat>
+                                        </dd>                                        
+                                    </ui:repeat>                                    
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <dl>
+                                    <dt><h:outputText class="text-bold" value="#{bundle.INCIDENT_SUMMARY}" /></dt>
+                                    <dd>
+                                        #{ticketBean.ticket.summary}    
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </h:panelGroup>   
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ui:composition>

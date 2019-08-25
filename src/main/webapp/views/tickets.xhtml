@@ -3,7 +3,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
 
     <ui:composition template="/template/template.xhtml">
 
@@ -90,6 +91,14 @@
                         </p:column>
                     </p:dataTable>
                 </div>
+                <iars:delete workingId="delete-ticket" idsToRender="tickets_table"
+                             listener="#{ticketBean.deleteTicket()}">
+                </iars:delete>
+                <iars:requestTicketUpdate workingId="request-ticket-update" idsToRender="tickets_table"
+                                          listener="#{ticketBean.requestUpdate()}">
+                </iars:requestTicketUpdate>
+                <ui:include src="/snippets/modals/viewers-modal.xhtml" />
+                <ui:include src="/snippets/modals/ticket-detailed-info-modal.xhtml" />
             </h:form>
         </ui:define>
 

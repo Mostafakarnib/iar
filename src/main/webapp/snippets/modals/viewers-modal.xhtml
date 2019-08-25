@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+    <div class="modal fade viewers-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h:outputText class="modal-title h3" value="#{bundle.TICKET_VIEWERS}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:panelGroup id="viewers_panel">
+                        <h:outputText class="text-bold" value="#{bundle.SELECT_OPERATORS_HOW_CAN_VIEW_THIS_TICKET}:" />
+                        <h:selectManyMenu class="form-control select2-multi" value="#{ticketBean.ticket.operatorList}"
+                                          converter="omnifaces.SelectItemsConverter">
+                            <f:selectItems value="#{ticketBean.operatorList}" var="operator"
+                                           itemLabel="#{operator.username}"
+                                           itemValue="#{operator}" />
+                        </h:selectManyMenu>
+                    </h:panelGroup>
+                </div>
+                <div class="modal-footer">
+                    <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary pull-right"
+                                   action="#{ticketBean.updateTicket()}">
+                        <f:ajax execute="viewers_panel" render="viewers_panel" />
+                    </h:commandLink>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>
