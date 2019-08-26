@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-gears"></i> #{bundle.DEPARTMENTS}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <h:outputText class="text-bold h4" value="#{bundle.DEPARTMENTS}" />
+                                <h:commandLink class="btn btn-warning pull-right btn-sm" value="#{bundle.ADD_DEPARTMENT}"
+                                               onclick="$('.department-dlg').modal('show');"
+                                               action="#{departmentBean.selectDepartment(null)}" >
+                                    <f:ajax render="department_panel" />
+                                </h:commandLink>
+                                <ui:include src="/snippets/modals/department-modal.xhtml" />
+                            </div>
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                                 rowIndexVar="index" id="departments_table" value="#{departmentBean.departmentList}"
+                                                 var="department" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                                 paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                                                 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                                        <p:column headerText="#" width="50">
+                                            <h:outputText class="" value="#{index + 1}." />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.DEPARTMENT}" >
+                                            <h:outputText  value="#{department.name}" />
+                                        </p:column>
+
+                                        <p:column headerText="#{bundle.CONTROL}" width="150" >
+                                            <div class="btn-group">
+                                                <h:commandLink class="btn btn-info"
+                                                               onclick="$('.department-dlg').modal('show');"
+                                                               action="#{departmentBean.selectDepartment(department)}">
+                                                    <i class="fa fa-edit" />
+                                                    <f:ajax render="department_panel" />
+                                                </h:commandLink>
+                                                <h:commandLink class="btn btn-danger open-popover"
+                                                               onclick="openDeletePopover(this, 'delete-department')"
+                                                               action="#{departmentBean.selectDepartment(department)}">
+                                                    <i class="fa fa-remove open-popover" />
+                                                    <f:ajax />
+                                                </h:commandLink>
+                                            </div>
+                                        </p:column>
+                                    </p:dataTable>
+
+                                    <iars:delete workingId="delete-department" idsToRender="departments_table"
+                                                 listener="#{departmentBean.deleteDepartment()}">
+                                    </iars:delete>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
