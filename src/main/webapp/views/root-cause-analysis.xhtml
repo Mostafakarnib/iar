@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-list"></i> #{bundle.ROOT_CAUSE_ANALYSIS}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="table-responsive">
+                    <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                 rowIndexVar="index" id="root_cause_table" value="#{rootCauseBean.rootCauseAnalysisList}"
+                                 var="rootCauseAnalysis" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                 paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                                 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                        <p:column headerText="#" width="50">
+                            <h:outputText class="" value="#{index + 1}." />
+                        </p:column>
+                        <p:column headerText="#{bundle.OPERATORS}" width="75" rendered="#{rootCauseBean.loginBean.operator.type == 'QUALITY_MANAGER'}">
+                            <h:outputText
+                                value="#{rootCauseAnalysis.targetOperator.username}">
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="#{bundle.TICKET_ID}" width="75">
+                            <h:outputText value="#{rootCauseAnalysis.ticket.id}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.REQUEST_DETAILS}" width="200">
+                            <h:outputText value="#{rootCauseAnalysis.requestDetails}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.RESPONSE_DETAILS}" width="200">
+                            <h:outputText value="#{rootCauseAnalysis.responseDetails}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.DATE}" width="75">
+                            <h:outputText value="#{rootCauseAnalysis.insertionDate}">
+                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="#{bundle.CONTROL}" width="50" >
+                            <div class="btn-group">
+                                <h:commandLink class="btn btn-success"
+                                               rendered="#{ticketBean.loginBean.operator.type !='QUALITY_MANAGER'}"
+                                               onclick="$('.response-dlg').modal('show')"
+                                               action="#{rootCauseBean.selectRootCauseAnalysis(rootCauseAnalysis)}">
+                                    <i class="fa fa-reply" />
+                                    <f:ajax render="response_analysis_panel"/>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger open-popover"
+                                               rendered="#{ticketBean.loginBean.operator.type =='QUALITY_MANAGER'}"
+                                               action="#{rootCauseBean.selectRootCauseAnalysis(rootCauseAnalysis)}"
+                                               onclick="openDeletePopover(this, 'delete-root-cause')">
+                                    <i class="fa fa-remove open-popover" />
+                                    <f:ajax />
+                                </h:commandLink>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                <iars:delete workingId="delete-root-cause" idsToRender="root_cause_table"
+                             listener="#{rootCauseBean.deleteRootCauseAnalysis()}">
+                </iars:delete>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
