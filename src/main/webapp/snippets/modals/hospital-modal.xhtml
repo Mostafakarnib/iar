@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="modal fade hospital-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h:outputText class="modal-title" value="#{bundle.HOSPITAL_INFORMATION}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:form prependId="false">
+                        <h:panelGroup id="modal_hospital_panel">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.REPRESENTATIVE_NAME}:" />
+                                        <h:inputText class="form-control" value="#{pirloBean.hospital.representativeName}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.REPRESENTATIVE_PHONE}:" />
+                                        <h:inputText class="form-control" value="#{pirloBean.hospital.representativePhone}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.REPRESENTATIVE_EMAIL}:" />
+                                        <h:inputText class="form-control"
+                                                     value="#{pirloBean.hospital.representativeEmail}" >                                            
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.HOSPITAL_NAME}:" />
+                                        <h:inputText class="form-control" value="#{pirloBean.hospital.name}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.SUBSCRIPTION_FEES}:" />
+                                        <h:inputText class="form-control" value="#{pirloBean.hospital.subscriptionFees}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.SUBSCRIPTION_END_DATE}:" />
+                                        <h:inputText class="form-control datepicker"
+                                                     value="#{pirloBean.hospital.subscriptionEndDate}" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.HOSPITAL_ADDRESS}:" />
+                                        <h:inputTextarea class="form-control" rows="5" value="#{pirloBean.hospital.address}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary" 
+                                                   action="#{pirloBean.saveHospital()}">
+                                        <f:ajax execute="modal_hospital_panel" render="hospitals_table" />
+                                    </h:commandLink>
+                                </div>
+                            </div>
+
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ui:composition>
