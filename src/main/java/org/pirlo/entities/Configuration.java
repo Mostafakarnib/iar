@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -19,9 +21,19 @@ import org.pirlo.enums.LangEnum;
 
 @Entity
 @Table(name = "tbl_configuration")
+@NamedQueries(
+        {
+            @NamedQuery(name = Configuration.FIND_ALL, query = "SELECT c FROM Configuration c")
+            ,@NamedQuery(name = Configuration.FIND_BY_ID, query = "SELECT c FROM Configuration c WHERE c.id = :id")
+            ,@NamedQuery(name = Configuration.FIND_BY_OPERATOR, query = "SELECT c FROM Configuration c WHERE c.operator = :operator")
+        })
 public class Configuration implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public static final String FIND_ALL = "Configuration.findAll";
+    public static final String FIND_BY_ID = "Configuration.findById";
+    public static final String FIND_BY_OPERATOR = "Configuration.findByOperator";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
