@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+    <ui:composition template="/template/template.xhtml">
+
+        <ui:define name="content-header">
+
+            <h1>
+                <i class="fa fa-list"></i> #{bundle.notifications}
+            </h1>
+
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form>
+                <div class="table-responsive">
+                    <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                 rowIndexVar="index" id="notifications_table" value="#{notificationBean.notificationList}"
+                                 var="notification" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                 paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                                 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                        <p:column headerText="#" width="50">
+                            <h:outputText class="" value="#{index + 1}." />
+                        </p:column>
+                        <p:column headerText="#{bundle.OPERATOR}" width="150">
+                            <h:outputText value="#{notification.operator.username}" />
+                        </p:column>
+
+                        <p:column headerText="#{bundle.TYPE}" width="150">
+                            <h:outputText value="#{bundle[notification.type]}" />
+                        </p:column>
+
+                        <p:column headerText="#{bundle.TITLE}" width="150">
+                            <h:outputText value="#{notification.title}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.DATE}" width="150">
+                            <h:outputText value="#{notification.insertionDate}">
+                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
