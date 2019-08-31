@@ -1,0 +1,150 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <h:commandLink class="btn btn-success btn-block margin-bottom"
+                               value="#{bundle.CREATE_TASKS}"
+                               action="#{ticketBean.showTaskModal()}">
+                    <f:ajax />
+                </h:commandLink>
+                <h:panelGroup id="tasks_panel">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h:outputText class="text-bold h4" value="#{bundle.TASKS}" />
+                        </div>
+                        <div class="box-body no-padding">
+                            <h:panelGroup rendered="#{ticketBean.loginBean.operator.type == 'QUALITY_MANAGER'}">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <ui:repeat value="#{ticketBean.ticket.taskList}" var="task" varStatus="myTask">
+                                        <li class="#{myTask.index == 0 ? 'active':''}" >
+                                            <a data-toggle="tab" href="##{task.id}">
+                                                <i class="fa fa-inbox" />
+                                                <h:outputText value="#{bundle.TASK} No. #{task.id} #{bundle.ASSIGNED_TO} #{task.operator.username}" />
+                                            </a>
+                                        </li>
+                                    </ui:repeat>
+                                </ul>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{ticketBean.loginBean.operator.type != 'QUALITY_MANAGER'}">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <ui:repeat value="#{ticketBean.getTaskByOperator()}" var="task" varStatus="myTask">
+                                        <li class="#{myTask.index == 0 ? 'active':''}" >
+                                            <a data-toggle="tab" href="##{task.id}">
+                                                <i class="fa fa-inbox" />
+                                                <h:outputText value="#{bundle.TASK} No. #{task.id}" />
+                                            </a>
+                                        </li>
+                                    </ui:repeat>
+                                </ul>
+                            </h:panelGroup>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /. box -->
+                </h:panelGroup>
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-8">
+                <h:panelGroup id="tasks_details_panel">
+                    <div class="tab-content">
+                        <ui:repeat value="#{ticketBean.ticket.taskList}" var="task" varStatus="myTask">
+                            <div id="#{task.id}" class="tab-pane fade #{myTask.index == 0 ? 'in active' : ''}">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <dl>
+                                            <dt>
+                                                <h:outputText class="text-bold" value="#{bundle.ASSIGNED_TO}:" />
+                                            </dt>
+                                            <dd>
+                                                #{task.operator.username}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <dl>
+                                            <dt>
+                                                <h:outputText class="text-bold" value="#{bundle.END_DATE}:" />
+                                            </dt>
+                                            <dd>
+                                                <h:outputText value="#{task.endDate}" >
+                                                    <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                                                </h:outputText>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <dl>
+                                            <dt>
+                                                <h:outputText class="text-bold" value="#{bundle.STATUS}:" />
+                                            </dt>
+                                            <dd>
+                                                #{bundle[task.status]}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <dl>
+                                            <dt>
+                                                <h:outputText class="text-bold" value="#{bundle.DETAILS}:" />
+                                            </dt>
+                                            <dd>
+                                                #{task.details}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <dl>
+                                            <dt>
+                                                <h:outputText class="text-bold" value="#{bundle.RESULT}:" />
+                                            </dt>
+                                            <dd>
+                                                #{task.result}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <dl>
+                                            <dt>
+                                                <h:outputText class="text-bold" value="#{bundle.SUMMARY}:" />
+                                            </dt>
+                                            <dd>
+                                                #{task.summary}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h:commandLink class="btn btn-primary pull-right"
+                                                       value="#{bundle.EDIT_TASK} No. #{task.id}"
+                                                       onclick="$('.edit_task-dlg').modal('show')"
+                                                       action="#{ticketBean.selectTask(task)}">
+                                            <f:ajax render="edit_task_panel" />
+                                        </h:commandLink>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </h:panelGroup>
+                <ui:include src="/snippets/modals/task-modal.xhtml" />
+                <ui:include src="/snippets/modals/edit_task-modal.xhtml" />
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </section>
+
+</ui:composition>

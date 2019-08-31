@@ -1,0 +1,144 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+    <br />
+    <div class="row">
+        <div class="col-lg-4">
+            <dl>                
+                <dt><h:outputText class="text-bold" value="#{bundle.NAME_OF_PERSON_AFFECTED_BY_THE_ACCIDENT}" /></dt>
+                <dd>
+                    #{ticketBean.ticket.apName}
+                </dd>
+                <br />               
+                <dt><h:outputText class="text-bold" value="#{bundle.OCCUPATIONAL_STATUS_OF_AFFECTED_PERSON}" /></dt>
+                <dd>
+                    #{bundle[ticketBean.ticket.apOccupationStatus]}
+                </dd>
+            </dl>
+        </div>
+        <div class="col-lg-4">
+            <dl>                                             
+                <dt><h:outputText class="text-bold" value="#{bundle.CATEGORY}" /></dt>
+                <dd>
+                    #{bundle[ticketBean.ticket.IACategory]}
+                </dd>
+                <br />
+                <dt><h:outputText class="text-bold" value="#{bundle.TYPE}" /></dt>
+                <dd>
+                    <ui:repeat value="#{ticketBean.ticket.IATypeList}" var="type" varStatus="statusVar">                        
+                        #{bundle[type]}                        
+                        <h:panelGroup rendered="#{statusVar.index != (ticketBean.ticket.IATypeList.size() - 1)}">
+                            ,
+                        </h:panelGroup>
+                    </ui:repeat>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-lg-4">
+            <dl>
+                <dt><h:outputText class="text-bold" value="#{bundle.INCIDENT_SUMMARY}" /></dt>
+                <dd>
+                    #{ticketBean.ticket.summary}
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <div class="btn-group pull-right">
+            <h:commandLink value="#{bundle.VIEW_DETAILED_INFO}" class="btn btn-warning"
+                           onclick="$('.detailed-ticket-dlg').modal('show')">                
+                <f:ajax render="" />
+            </h:commandLink>
+            <h:link value="#{bundle.EDIT_TICKET}" class="btn btn-primary" outcome="edit-ticket">
+                <i class="fa fa-arrow-right" />
+                <f:param name="id" value="#{ticketBean.ticket.id}" />
+            </h:link>
+        </div>
+        <ui:include src="/snippets/modals/ticket-detailed-info-modal.xhtml" />
+    </div>
+
+    <br />
+
+    <div class="box">
+        <div class="box-header">
+            <h:outputText class="box-title text-bold" style="font-size: medium;" value="#{bundle.TICKET_CONCLUSION}" />
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h:outputText id="txt_summary_id" class="h4" value="#{ticketBean.ticket.summary}"/>               
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <h:commandLink value="#{bundle.EDIT_TICKET_SUMMARY}" class="btn btn-primary pull-right"
+                           onclick="$('.ticket-summary-dlg').modal('show')">                
+                <f:ajax render="" />
+            </h:commandLink>
+            <ui:include src="/snippets/modals/ticket-summary-modal.xhtml" />
+        </div>
+    </div>
+
+    <br />
+
+    <div class="box box-primary">
+        <div class="box-header">
+            <h:outputText class="box-title text-bold" style="font-size: medium;" value="#{bundle.COMMENTS}" />
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box-footer box-comments">
+                    <h:panelGroup id="comments_panel">
+                        <ui:repeat value="#{ticketBean.ticket.commentList}" var="comment">
+                            <div class="box-comment">
+                                <!-- User image -->
+                                <h:graphicImage value="/resources/images/user.png" class="img-circle img-sm"/>                    
+
+                                <div class="comment-text">
+                                    <span class="username">
+                                        #{comment.operator.username}
+                                        <span class="text-muted pull-right">
+                                            <h:outputText value="#{comment.insertionDate}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                                            </h:outputText>
+                                        </span>
+                                    </span><!-- /.username -->
+                                    #{comment.description}
+                                </div>
+                                <!-- /.comment-text -->
+                            </div>
+                            <!-- /.box-comment -->
+                        </ui:repeat>
+                    </h:panelGroup>
+                </div>
+                <div class="box-footer">                    
+                    <h:graphicImage value="/resources/images/user.png" class="img-circle img-sm"/>
+                    <!-- .img-push is used to add margin to elements next to floating images -->
+                    <div class="img-push">
+                        <h:inputText id="txt_comment" class="form-control input-sm" 
+                                     value="#{ticketBean.comment.description}" />
+                        <h:commandLink id="btn_save_comment" style="display: none;" 
+                                       action="#{ticketBean.saveComment()}" >
+                            <f:ajax execute="txt_comment" render="txt_comment comments_panel" />
+                    </h:commandLink>
+                </div>
+                <script type="text/javascript">
+                    $('#txt_comment').keypress(function (e) {
+                        if (e.which === 13) {
+                            $('#btn_save_comment').click();
+                            return false;
+                        }
+                    });
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</ui:composition>

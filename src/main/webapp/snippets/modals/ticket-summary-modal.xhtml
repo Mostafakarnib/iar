@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="modal fade ticket-summary-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h:outputText class="modal-title" value="#{bundle.EDIT_TICKET_CONCLUSION}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:panelGroup id="ticket_summary_panel">
+                        <h:inputTextarea rows="10" value="#{ticketBean.ticket.summary}" class="form-control" />
+                    </h:panelGroup>
+                </div>
+
+
+                <div class="modal-footer">
+                    <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary pull-right" 
+                                   action="#{ticketBean.saveTicketSummary()}">                
+                        <f:ajax execute="ticket_summary_panel" render="ticket_summary_panel txt_summary_id" />
+                    </h:commandLink>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ui:composition>

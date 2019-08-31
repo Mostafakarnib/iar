@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-3">
+                <h:commandLink class="btn btn-primary btn-block margin-bottom"
+                               value="#{bundle.REQUEST_ANALYSIS}"
+                               action="#{ticketBean.showTicketAnalysisModal()}">
+                    <f:ajax />
+                </h:commandLink>
+
+                <h:panelGroup id="ticket_analysis_panel">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <b><h3 class="box-title">#{bundle.OPERATORS}</h3></b>
+                        </div>
+                        <div class="box-body no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <ui:repeat value="#{ticketBean.ticket.rootCauseAnalysisList}" var="root" varStatus="myRoot">
+                                    <li class="#{myOperator.index == 0 ? 'active':''}" >
+                                        <a data-toggle="tab" href="##{root.targetOperator.id}">
+                                            <i class="fa fa-inbox"></i>
+                                            <h:outputText value="#{bundle.ROOT_CAUSE_ANALYSIS} No. #{root.id} #{bundle.ASSIGNED_TO} #{root.targetOperator.username}" /></a>
+                                    </li>
+                                </ui:repeat>
+                            </ul>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </div>
+            <div class="col-md-9">
+                <h:panelGroup id="ticket_analysis_details_panel">
+                    <div class="tab-content">
+                        <ui:repeat value="#{ticketBean.ticket.operatorList}" var="operator" varStatus="myOperator">
+
+                            <div id="#{operator.id}" class="tab-pane fade #{myOperator.index == 0 ? 'in active' : ''}">
+                                <ui:repeat value="#{ticketBean.getAnalysisByOperator(operator)}" var="rootCauseAnalysis" varStatus="myRootCauseAnalysis">
+                                    <!-- Message to the right -->
+                                    <div class="direct-chat-msg #{rootCauseAnalysis.senderOperator.type == 'QUALITY_MANAGER' ? 'right' : ''}">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-#{rootCauseAnalysis.senderOperator.type == 'QUALITY_MANAGER' ? 'right' : 'left'}">
+                                                <h:outputText value="#{rootCauseAnalysis.senderOperator.username}" />
+                                            </span>
+                                            <span class="direct-chat-timestamp pull-#{rootCauseAnalysis.senderOperator.type == 'QUALITY_MANAGER' ? 'left' : 'right'}">
+                                                <h:outputText value="#{rootCauseAnalysis.insertionDate}" >
+                                                    <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                                                </h:outputText>
+                                            </span>
+                                        </div>
+                                        <!-- /.direct-chat-info -->
+                                        <h:graphicImage class="direct-chat-img" value="/resources/images/user.png" />
+                                        <div class="direct-chat-text">
+                                            <h:outputText value="#{rootCauseAnalysis.requestDetails}" />
+                                        </div>
+                                        <!-- /.direct-chat-text -->
+                                    </div>
+                                    <div class="direct-chat-msg #{rootCauseAnalysis.targetOperator.type != 'QUALITY_MANAGER' ? 'left' : ''}">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-#{rootCauseAnalysis.targetOperator.type != 'QUALITY_MANAGER' ? 'left' : 'right'}">
+                                                <h:outputText value="#{rootCauseAnalysis.targetOperator.username}" />
+                                            </span>
+                                            <span class="direct-chat-timestamp pull-#{rootCauseAnalysis.targetOperator.type != 'QUALITY_MANAGER' ? 'right' : 'left'}">
+                                                <h:outputText value="#{rootCauseAnalysis.insertionDate}" >
+                                                    <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                                                </h:outputText>
+                                            </span>
+                                        </div>
+                                        <!-- /.direct-chat-info -->
+                                        <h:graphicImage class="direct-chat-img" value="/resources/images/user.png" />
+                                        <!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            <h:outputText value="#{rootCauseAnalysis.responseDetails}" />
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+
+                        </ui:repeat>
+                    </div>
+                </h:panelGroup>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <ui:include src="/snippets/modals/request-root-cause-modal.xhtml" />
+    </section>
+
+</ui:composition>
