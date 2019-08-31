@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view locale="#{templateBean.locale}">
+
+        <h:head>
+            <meta charset="utf-8" />
+
+            <title>Pirlo Incident Reporting Control System | PIRCS</title>
+
+            <!-- Tell the browser to be responsive to screen width -->
+            <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+            <!-- Bootstrap 3.3.7 -->
+            <h:outputStylesheet name="bootstrap.min.css" library="plugins/bootstrap/css" />
+
+            <!-- Font Awesome -->
+            <h:outputStylesheet name="font-awesome.min.css" library="plugins/font-awesome/css" />
+
+            <!-- iCheck -->
+            <h:outputStylesheet name="blue.css" library="plugins/iCheck/square" />
+
+            <!-- Tether -->
+            <h:outputStylesheet name="tether.css" library="plugins/tether" />
+
+            <!-- Toastr -->
+            <h:outputStylesheet name="toastr.min.css" library="plugins/toastr" />
+
+            <!-- Select2 -->
+            <h:outputStylesheet name="select2.min.css" library="plugins/select2" />
+
+            <!-- DateTime-Picker -->
+            <h:outputStylesheet name="bootstrap-datetimepicker.min.css" library="plugins/bootstrap-datetimepicker/css" />
+
+            <!-- DateTime-Picker -->
+            <h:outputStylesheet name="bootstrap-datepicker.min.css" library="plugins/bootstrap-datepicker/css" />
+
+            <!-- Theme style -->
+            <h:outputStylesheet name="AdminLTE.min.css" library="css/general" />
+
+            <!-- Additional Style -->
+            <h:outputStylesheet name="style.css" library="css/general" />
+
+            <!-- Template Style -->
+            <h:outputStylesheet name="template.css" library="css/pages" />
+
+            <!-- AdminLTE Skins. Choose a skin from the css/skins -->
+            <h:outputStylesheet name="skin-blue.css" library="css/skins" />
+
+            <!-- Font style -->
+            <h:outputStylesheet name="source-sans-pro.css" library="fonts/google-source-sans-pro" />
+
+            <f:facet name="first">
+                <h:outputScript name="jquery.js" library="primefaces/jquery" />
+                <h:outputScript name="jquery-plugins.js" library="primefaces/jquery" />
+            </f:facet>
+
+            <style>
+                .main-header .navbar {
+                    margin-left: unset;    
+                }
+
+            </style>
+
+        </h:head>
+
+        <h:body class="hold-transition skin-blue fixed">
+
+            <div class="wrapper sidebar-collapse">
+
+                <header class="main-header">
+                    <h:form prependId="false">
+
+                        <!-- Header Navbar: style can be found in header.less -->
+                        <nav class="navbar navbar-static-top">
+
+                            <!-- Navbar Right Menu -->
+                            <div class="navbar-custom-menu">
+                                <ul class="nav navbar-nav">
+
+                                    <!-- Languages: style can be found in dropdown.less -->
+                                    <li class="dropdown notifications-menu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-language"></i>
+                                            <span class="label label-warning">#{ticketFormBean.getUpperCasedLang()}</span>
+                                        </a>
+                                        <ul class="dropdown-menu" style="width: 0px !important;">
+                                            <li>
+                                                <!-- inner menu: contains the actual data -->
+                                                <ul class="menu">
+                                                    <h:panelGroup id="lang_panel">
+                                                        <ui:repeat value="#{utilityBean.langList}" var="lang">
+                                                            <li>
+                                                                <div class="lang-li">
+                                                                    <h:commandLink action="#{ticketFormBean.changeLang(lang.value)}">
+                                                                        <h:panelGroup rendered="#{lang.value == ticketFormBean.lang}">
+                                                                            <i class="fa fa-check" />
+                                                                        </h:panelGroup>
+                                                                        #{lang.label}
+                                                                        <f:ajax execute="lang_panel" render="lang_panel" />
+                                                                    </h:commandLink>
+                                                                </div>
+                                                            </li>
+                                                        </ui:repeat>
+                                                    </h:panelGroup>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </h:form>
+                </header>
+
+                <!-- Content Wrapper. Contains page content -->
+                <section class="content-wrapper">
+                    <div class="container" style="width: 100%;padding: 2% 2%;">
+                        <h:form>
+                            <ui:include src="/snippets/sections/ticket-form.xhtml" />    
+                        </h:form>
+                    </div>                   
+                </section>
+                <!-- /.content-wrapper -->
+
+                <!-- <footer class="main-footer fixed-footer"> -->
+                <footer class="main-footer">
+                    <div class="pull-right hidden-xs">
+                        <b>Version</b> 1.0.0
+                    </div>
+                    <strong>Copyright © 2017 <a>PIRLO</a>.</strong> All rights
+                    reserved.
+                </footer>
+
+            </div>
+            <!-- ./wrapper -->
+
+            <!-- Bootstrap 3.3.7 -->
+            <h:outputScript name="bootstrap.min.js" library="plugins/bootstrap/js" />
+
+            <!-- jQuery Validation -->
+            <h:outputScript name="jquery.validate.min.js" library="plugins/validation" />
+
+            <!-- AdminLTE App -->
+            <h:outputScript name="adminlte.min.js" library="js/general" />
+
+            <!-- iCheck -->
+            <h:outputScript name="icheck.min.js" library="plugins/iCheck" />
+
+            <!-- SlimScroll -->
+            <h:outputScript name="jquery.slimscroll.min.js" library="plugins/jquery-slimscroll" />
+
+            <!-- Tether -->
+            <h:outputScript name="tether.min.js" library="plugins/tether" />
+
+            <!-- Charts -->
+            <h:outputScript name="Chart.min.js" library="plugins/chart.js" />
+
+            <!-- Toastr -->
+            <h:outputScript name="toastr.min.js" library="plugins/toastr" />
+
+            <!-- Select2 -->
+            <h:outputScript name="select2.min.js" library="plugins/select2" />
+
+            <!-- Moment -->
+            <h:outputScript name="moment.js" library="plugins/moment/js" />
+
+            <!-- DateTime-Picker -->
+            <h:outputScript name="bootstrap-datetimepicker.js" library="plugins/bootstrap-datetimepicker/js" />
+
+            <!-- Date-Picker -->
+            <h:outputScript name="bootstrap-datepicker.js" library="plugins/bootstrap-datepicker/js" />
+
+            <!-- Template -->
+            <h:outputScript name="template.js" library="js/pages" />
+
+        </h:body>
+
+    </f:view>
+
+</html>
