@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <div class="modal fade edit_task-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h:outputText class="modal-title h3" value="#{bundle.EDIT_TASK}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+                    <h:panelGroup id="edit_task_panel">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.ASSIGNED_TO}:" />
+                                        <h:selectOneMenu class="form-control select2 input-sm" id="cb_edit_modal_assigned_to"
+                                                         converter="omnifaces.SelectItemsConverter"
+                                                         value="#{ticketBean.task.operator}" required="true" >
+                                            <f:selectItem itemValue="#{null}" itemLabel="#{bundle.CHOOSE}" />
+                                            <f:selectItems value="#{ticketBean.operatorList}" var="operator"
+                                                           itemValue="#{operator}" itemLabel="#{operator.username}" />
+                                        </h:selectOneMenu>
+                                        <h:message for="cb_edit_modal_assigned_to" styleClass="error-message" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.END_DATE}:" />
+                                        <h:inputText class="form-control input-sm datetimepicker text-bold fa-0x"
+                                                     value="#{ticketBean.task.endDate}" id="txt_edit_end_date"
+                                                     required="true">
+                                            <f:convertDateTime pattern="dd/mm/yyyy hh:mm" />
+                                        </h:inputText>
+                                        <h:message for="txt_edit_end_date" styleClass="error-message" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.DETAILS}:" />
+                                        <h:inputTextarea class="form-control input-sm" id="txt_edit_information"
+                                                         rows="4" value="#{ticketBean.task.details}" required="true"/>
+                                        <h:message for="txt_edit_information" styleClass="error-message" />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.RESULT}:" />
+                                        <h:inputTextarea class="form-control input-sm" id="txt-result"
+                                                         rows="4" value="#{ticketBean.task.result}" required="true"/>
+                                        <h:message for="txt-result" styleClass="error-message" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.SUMMARY}:" />
+                                        <h:inputTextarea class="form-control input-sm" id="txt-summary"
+                                                         rows="7" value="#{ticketBean.task.summary}" required="true"/>
+                                        <h:message for="txt-summary" styleClass="error-message" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h:panelGroup>
+                </div>
+                <div class="modal-footer">
+                    <h:commandLink value="#{bundle.SAVE}" class="btn btn-primary pull-right"
+                                   action="#{ticketBean.saveRootCauseAnalysis()}">
+                        <f:ajax execute="edit_task_panel" render="edit_task_panel tasks_details_panel" />
+                    </h:commandLink>
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>

@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:iars="http://xmlns.jcp.org/jsf/composite/iars">
+
+
+    <div class="modal fade admin-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h:outputText class="modal-title" value="#{bundle.QUALITY_USERS}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:form prependId="false">
+                        <h:panelGroup id="add_admin_panel">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.TITLE}:" />
+                                        <h:inputText id="txt_operator_title" class="form-control input-sm" required="true"
+                                                     value="#{pirloBean.operator.title}" />
+                                        <h:message for="txt_operator_title" styleClass="error-message" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <h:outputText class="text-bold" value="#{bundle.USERSNAME}:" />
+                                        <h:inputText id="txt_operator_username" class="form-control input-sm" required="true"
+                                                     value="#{pirloBean.operator.username}" />
+                                        <h:message for="txt_operator_username" styleClass="error-message" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="margin-top: 19.5px;">
+
+                                </div>
+                                <div class="col-lg-1" style="margin-top: 19.5px;">
+                                    <h:outputText class="text-bold" value="" />
+                                    <h:commandLink class="btn btn-primary pull-right" value="#{bundle.SAVE}" 
+                                                   action="#{pirloBean.addOperator()}">
+                                        <f:ajax execute="add_admin_panel" render="admins_table add_admin_panel" />
+                                    </h:commandLink>
+                                </div>
+                            </div>                            
+                        </h:panelGroup>
+                        <br />
+
+                        <div class="table-responsive">
+                            <p:dataTable tableStyleClass="table table-hover table-condensed table-bordered"
+                                         rowIndexVar="index" id="admins_table" value="#{pirloBean.operatorList}" 
+                                         var="operator" emptyMessage="#{bundle.EMPTY_TABLE}"
+                                         paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="20,30,40"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+                                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="20">
+
+                                <p:column headerText="#" width="50">                            
+                                    <h:outputText class="" value="#{index + 1}." />                            
+                                </p:column>
+                                <p:column headerText="#{bundle.TITLE}">                            
+                                    <h:outputText value="#{operator.title}" />                            
+                                </p:column>
+                                <p:column headerText="#{bundle.USERSNAME}">                            
+                                    <h:outputText value="#{operator.username}" />                            
+                                </p:column>
+                                <p:column headerText="#{bundle.CONTROL}" width="100">
+                                    <div class="btn-group">
+                                        <h:commandLink value="" styleClass="btn btn-danger open-popover" 
+                                                       title="Delete Operator"
+                                                       action="#{pirloBean.selectOperator(operator)}"
+                                                       onclick="openDeletePopover(this, 'delete-admin')">
+                                            <i class="fa fa-remove open-popover" />
+                                            <f:ajax />
+                                        </h:commandLink>
+                                    </div>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                        <iars:delete workingId="delete-admin" idsToRender="admins_table"
+                                     listener="#{pirloBean.deleteOperator()}">
+                        </iars:delete>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</ui:composition>
