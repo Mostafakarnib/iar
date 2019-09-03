@@ -11,7 +11,8 @@ import org.pirlo.facades.ConfigurationFacade;
 
 @ManagedBean
 @ViewScoped
-public class TicketFormBean implements Serializable {
+public class TicketFormBean implements Serializable
+{
 
     @ManagedProperty(value = "#{utilityBean}")
     private UtilityBean utilityBean;
@@ -22,39 +23,48 @@ public class TicketFormBean implements Serializable {
     ConfigurationFacade configurationFacade;
 
     @PostConstruct
-    public void init() {
+    public void init()
+    {
 
     }
 
-    public String getUpperCasedLang() {
+    public String getUpperCasedLang()
+    {
         return lang.name().toUpperCase();
     }
 
-    public void changeLang(LangEnum tmpLang) {
+    public void changeLang(LangEnum tmpLang)
+    {
         lang = tmpLang;
     }
 
-    public ConfigurationFacade getConfigurationFacade() {
+    public ConfigurationFacade getConfigurationFacade()
+    {
         return configurationFacade;
     }
 
-    public void setConfigurationFacade(ConfigurationFacade configurationFacade) {
+    public void setConfigurationFacade(ConfigurationFacade configurationFacade)
+    {
         this.configurationFacade = configurationFacade;
     }
 
-    public UtilityBean getUtilityBean() {
+    public UtilityBean getUtilityBean()
+    {
         return utilityBean;
     }
 
-    public void setUtilityBean(UtilityBean utilityBean) {
+    public void setUtilityBean(UtilityBean utilityBean)
+    {
         this.utilityBean = utilityBean;
     }
 
-    public LangEnum getLang() {
+    public LangEnum getLang()
+    {
         return lang;
     }
 
-    public void setLang(LangEnum lang) {
+    public void setLang(LangEnum lang)
+    {
         this.lang = lang;
     }
 

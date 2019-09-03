@@ -20,7 +20,8 @@ import org.pirlo.facades.ConfigurationFacade;
 
 @ManagedBean
 @SessionScoped
-public class TemplateBean implements Serializable {
+public class TemplateBean implements Serializable
+{
 
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
@@ -39,8 +40,10 @@ public class TemplateBean implements Serializable {
     List<Notification> notificationList = new ArrayList<>();
 
     @PostConstruct
-    public void init() {
-        try {
+    public void init()
+    {
+        try
+        {
             refreshLangEnumValue();
             updateViewLocale(new Locale(lang.toString()));
 
@@ -57,93 +60,121 @@ public class TemplateBean implements Serializable {
             notification.setTitle("New Task added");
             notification.setType(NotificationEnum.ASSIGN_TASKS);
             notificationList.add(notification);
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             // TODO: handle exception
             e.printStackTrace();
         }
 
     }
 
-    private void refreshLangEnumValue() {
+    private void refreshLangEnumValue()
+    {
         Configuration conf = configurationFacade.findByOperator(loginBean.operator);
-        if (conf.getId() == null) {
+        if (conf.getId() == null)
+        {
             lang = LangEnum.en;
             conf.setLang(lang);
             conf.setOperator(loginBean.operator);
             conf = configurationFacade.save(conf);
-        } else {
+        } else
+        {
             lang = conf.getLang();
         }
     }
 
-    public String getUpperCasedLang() {
+    public void print()
+    {
+        System.out.println("hello");
+    }
+
+    public String getUpperCasedLang()
+    {
         return lang.toString().toUpperCase();
     }
 
-    public void updateViewLocale(Locale locale) {
+    public void updateViewLocale(Locale locale)
+    {
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
         refreshLangEnumValue();
         this.locale = locale;
-        try {
+        try
+        {
             Ajax.oncomplete("onLanguageChange();");
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
+            // do nothing
         }
 
     }
 
-    public String getActivePage() {
+    public String getActivePage()
+    {
         return activePage;
     }
 
-    public void setActivePage(String activePage) {
+    public void setActivePage(String activePage)
+    {
         this.activePage = activePage;
     }
 
-    public LangEnum getLang() {
+    public LangEnum getLang()
+    {
         return lang;
     }
 
-    public void setLang(LangEnum lang) {
+    public void setLang(LangEnum lang)
+    {
         this.lang = lang;
     }
 
-    public ConfigurationFacade getConfigurationFacade() {
+    public ConfigurationFacade getConfigurationFacade()
+    {
         return configurationFacade;
     }
 
-    public void setConfigurationFacade(ConfigurationFacade configurationFacade) {
+    public void setConfigurationFacade(ConfigurationFacade configurationFacade)
+    {
         this.configurationFacade = configurationFacade;
     }
 
-    public Locale getLocale() {
+    public Locale getLocale()
+    {
         return locale;
     }
 
-    public void setLocale(Locale locale) {
+    public void setLocale(Locale locale)
+    {
         this.locale = locale;
     }
 
-    public LoginBean getLoginBean() {
+    public LoginBean getLoginBean()
+    {
         return loginBean;
     }
 
-    public void setLoginBean(LoginBean loginBean) {
+    public void setLoginBean(LoginBean loginBean)
+    {
         this.loginBean = loginBean;
     }
 
-    public Integer getUnreadNotificationsCount() {
+    public Integer getUnreadNotificationsCount()
+    {
         return unreadNotificationsCount;
     }
 
-    public void setUnreadNotificationsCount(Integer unreadNotificationsCount) {
+    public void setUnreadNotificationsCount(Integer unreadNotificationsCount)
+    {
         this.unreadNotificationsCount = unreadNotificationsCount;
     }
 
-    public List<Notification> getNotificationList() {
+    public List<Notification> getNotificationList()
+    {
         return notificationList;
     }
 
-    public void setNotificationList(List<Notification> notificationList) {
+    public void setNotificationList(List<Notification> notificationList)
+    {
         this.notificationList = notificationList;
     }
 

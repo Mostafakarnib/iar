@@ -36,11 +36,20 @@ public class RootCauseBean implements Serializable {
     public void init() {
         try {
             operatorList = operatorFacade.findByHospital(loginBean.operator.getHospital());
-            rootCauseAnalysisList = rootCauseAnalysisFacade.findAll();
+            if ((loginBean.operator.getType().getBundleKey()).equalsIgnoreCase("QUALITY_MANAGER")) {
+                rootCauseAnalysisList = rootCauseAnalysisFacade.findAll();
+            } else {
+                rootCauseAnalysisList = rootCauseAnalysisFacade.findByTargetOperator(loginBean.operator);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String isQuality() {
+        return (loginBean.operator.getType().getBundleKey());
+
     }
 
     public void saveRootCauseAnalysis() {
@@ -52,6 +61,7 @@ public class RootCauseBean implements Serializable {
         if (check) {
             rootCauseAnalysisList.add(rootCauseAnalysis);
         }
+        utilityBean.hideModal("response-dlg");
     }
 
     public void selectRootCauseAnalysis(RootCauseAnalysis tmprootCauseAnalysis) {

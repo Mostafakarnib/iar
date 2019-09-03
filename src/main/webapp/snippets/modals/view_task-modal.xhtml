@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:iso="http://java.sun.com/jsf/composite/bo"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+    <div class="modal fade view-task-dlg" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h:outputText class="modal-title h3" value="#{bundle.VIEW_TASK}" />
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <h:panelGroup id="view-task_panel">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <dl>
+                                        <dt>
+                                            <h:outputText class="text-bold" value="#{bundle.ASSIGNED_TO}:" />
+                                        </dt>
+                                        <dd>
+                                            #{taskBean.task.operator.username}
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-4">
+                                    <dl>
+                                        <dt>
+                                            <h:outputText class="text-bold" value="#{bundle.END_DATE}:" />
+                                        </dt>
+                                        <dd>
+                                            <h:outputText value="#{taskBean.task.endDate}" >
+                                                <f:convertDateTime pattern="dd-MM-yyyy hh:mm a" />
+                                            </h:outputText>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-4">
+                                    <dl>
+                                        <dt>
+                                            <h:outputText class="text-bold" value="#{bundle.STATUS}:" />
+                                        </dt>
+                                        <dd>
+                                            #{bundle[taskBean.task.status]}
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <dl>
+                                        <dt>
+                                            <h:outputText class="text-bold" value="#{bundle.DETAILS}:" />
+                                        </dt>
+                                        <dd>
+                                            #{taskBean.task.details}
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </h:panelGroup>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>

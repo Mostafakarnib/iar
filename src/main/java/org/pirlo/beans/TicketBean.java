@@ -15,18 +15,29 @@ import org.omnifaces.util.Ajax;
 import org.omnifaces.util.Faces;
 import org.pirlo.custom.MEClass;
 import org.pirlo.custom.METypeClass;
+import org.pirlo.entities.Comment;
 import org.pirlo.entities.Department;
 import org.pirlo.entities.Hospital;
 import org.pirlo.entities.MedicationError;
+import org.pirlo.entities.Notification;
 import org.pirlo.entities.Operator;
+import org.pirlo.entities.RootCauseAnalysis;
+import org.pirlo.entities.Task;
 import org.pirlo.entities.Ticket;
 import org.pirlo.enums.MEEnum;
 import org.pirlo.enums.METypeEnum;
+import org.pirlo.enums.NotificationEnum;
 import org.pirlo.enums.SeverityEnum;
+import org.pirlo.enums.TaskStatusEnum;
 import org.pirlo.enums.TicketStatusEnum;
 import org.pirlo.enums.ToasterEnum;
+import org.pirlo.facades.CommentFacade;
+import org.pirlo.facades.DepartmentFacade;
 import org.pirlo.facades.HospitalFacade;
+import org.pirlo.facades.NotificationFacade;
 import org.pirlo.facades.OperatorFacade;
+import org.pirlo.facades.RootCauseAnalysisFacade;
+import org.pirlo.facades.TaskFacade;
 import org.pirlo.facades.TicketFacade;
 
 @ManagedBean
@@ -43,13 +54,28 @@ public class TicketBean implements Serializable {
     @EJB
     HospitalFacade hospitalFacade;
     @EJB
+    DepartmentFacade departmentFacade;
+    @EJB
     OperatorFacade operatorFacade;
+    @EJB
+    CommentFacade commentFacade;
+    @EJB
+    RootCauseAnalysisFacade rootCauseAnalysisFacade;
+    @EJB
+    TaskFacade taskFacade;
+    @EJB
+    NotificationFacade notificationFacade;
 
     Ticket ticket = new Ticket();
     List<Ticket> ticketList = new ArrayList<>();
     List<Department> departmentList = new ArrayList<>();
     List<Operator> operatorList = new ArrayList<>();
     List<MEClass> meClassList = new ArrayList<>();
+
+    RootCauseAnalysis rootCauseAnalysis = new RootCauseAnalysis();
+    Comment comment = new Comment();
+    Task task = new Task();
+    Notification notification = new Notification();
 
     @PostConstruct
     public void init() {
@@ -72,6 +98,7 @@ public class TicketBean implements Serializable {
             }
 
             ticketList = ticketFacade.findByHospital(loginBean.operator.getHospital());
+            departmentList = departmentFacade.findByHospital(loginBean.operator.getHospital());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,6 +141,7 @@ public class TicketBean implements Serializable {
                                     ticket.setStatus(TicketStatusEnum.NEW);
                                 }
 
+                                boolean sendEmergencyEmail = false;
                                 switch (ticket.getIACategory()) {
                                     case NEAR_MISS:
                                         ticket.setSeverity(SeverityEnum.LOW);
@@ -127,6 +155,9 @@ public class TicketBean implements Serializable {
                                     default:
                                         ticket.setSeverity(SeverityEnum.LOW);
                                         break;
+                                }
+                                if (ticket.getSeverity() == SeverityEnum.SEVERE) {
+                                    sendEmergencyEmail = true;
                                 }
                                 boolean doesContainCheckedME = false;
                                 List<MedicationError> medicationErrorList = new ArrayList<>();
@@ -158,6 +189,20 @@ public class TicketBean implements Serializable {
                                     String toast = "showToastr('" + description + "','info','500')";
                                     Ajax.oncomplete(toast);
 
+                                    notification.setType(NotificationEnum.NEW_TICKET);
+                                    notification.setOperator(loginBean.operator);
+                                    notificationFacade.save(notification);
+
+                                    System.out.println("sendEmergencyEmail: " + sendEmergencyEmail);
+                                    if (sendEmergencyEmail) {
+                                        List<Operator> opList = operatorFacade.findByHospitalAndEmergency(hospital, true);
+
+                                        for (Operator operator : opList) {
+                                            utilityBean.sendEmail("Emergency Ticket" + ticket.getId(), ticket.getDetails(), operator.getEmail());
+                                        }
+                                        utilityBean.sendEmail("Emergency Ticket" + ticket.getId(), ticket.getDetails(), loginBean.getOperator().getEmail());
+                                    }
+
                                     ticket = new Ticket();
                                 } else {
                                     utilityBean.showToastr("Should Contain at least one checked error!", ToasterEnum.error.name());
@@ -178,6 +223,16 @@ public class TicketBean implements Serializable {
         }
     }
 
+    public List<RootCauseAnalysis> getAnalysisByOperator(Operator tmpOperator) {
+        List<RootCauseAnalysis> analysisList = rootCauseAnalysisFacade.findByTargetOperatorAndTicket(tmpOperator, ticket);
+        return analysisList;
+    }
+
+    public List<Task> getTaskByOperator() {
+        List<Task> tasksList = taskFacade.findTaskByOperatorAndTicket(loginBean.operator, ticket);
+        return tasksList;
+    }
+
     public void saveTicketSummary() {
         ticket.setStatus(TicketStatusEnum.CLOSED);
         ticket = ticketFacade.save(ticket);
@@ -186,6 +241,25 @@ public class TicketBean implements Serializable {
 
     public void updateTicket() {
         ticket = ticketFacade.save(ticket);
+    }
+
+    public void saveComment() {
+        comment.setOperator(loginBean.getOperator());
+        comment.setTicket(ticket);
+        comment = commentFacade.save(comment);
+        ticket.getCommentList().add(comment);
+        ticket = ticketFacade.save(ticket);
+        comment = new Comment();
+    }
+
+    public void requestUpdate() {
+        for (Operator operator : ticket.getOperatorList()) {
+            utilityBean.sendEmail("Reminder update for Ticket" + ticket.getId(), ticket.getSummary(), operator.getEmail());
+        }
+    }
+
+    public void showTicketAnalysisModal() {
+        utilityBean.showModal("request-dlg");
     }
 
     public void selectTicket(Ticket tmpTicket) {
@@ -198,6 +272,37 @@ public class TicketBean implements Serializable {
     public void deleteTicket() {
         ticketList.remove(ticket);
         ticketFacade.remove(ticket);
+    }
+
+    public void saveRootCauseAnalysis() {
+        rootCauseAnalysis.setTicket(ticket);
+        rootCauseAnalysis.setSenderOperator(loginBean.operator);
+        ticket.getRootCauseAnalysisList().add(rootCauseAnalysis);
+        if (!ticket.getOperatorList().contains(rootCauseAnalysis.getTargetOperator())) {
+            ticket.getOperatorList().add(rootCauseAnalysis.getTargetOperator());
+        }
+        ticket.setStatus(TicketStatusEnum.IN_PROGRESS);
+        ticket = ticketFacade.save(ticket);
+        rootCauseAnalysis = new RootCauseAnalysis();
+        utilityBean.hideModal("edit_task-dlg");
+        utilityBean.hideModal("request-dlg");
+    }
+
+    public void saveTask() {
+        task.setStatus(TaskStatusEnum.NEW);
+        task.setTicket(ticket);
+        ticket.getTaskList().add(task);
+        ticket.setStatus(TicketStatusEnum.IN_PROGRESS);
+        ticket = ticketFacade.save(ticket);
+        task = new Task();
+        utilityBean.hideModal("task-dlg");
+    }
+
+    public void selectTask(Task tmpTask) {
+        task = tmpTask;
+        if (task == null) {
+            task = new Task();
+        }
     }
 
     public UtilityBean getUtilityBean() {
@@ -254,6 +359,78 @@ public class TicketBean implements Serializable {
 
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
+    }
+
+    public HospitalFacade getHospitalFacade() {
+        return hospitalFacade;
+    }
+
+    public void setHospitalFacade(HospitalFacade hospitalFacade) {
+        this.hospitalFacade = hospitalFacade;
+    }
+
+    public OperatorFacade getOperatorFacade() {
+        return operatorFacade;
+    }
+
+    public void setOperatorFacade(OperatorFacade operatorFacade) {
+        this.operatorFacade = operatorFacade;
+    }
+
+    public RootCauseAnalysis getRootCauseAnalysis() {
+        return rootCauseAnalysis;
+    }
+
+    public void setRootCauseAnalysis(RootCauseAnalysis rootCauseAnalysis) {
+        this.rootCauseAnalysis = rootCauseAnalysis;
+    }
+
+    public RootCauseAnalysisFacade getRootCauseAnalysisFacade() {
+        return rootCauseAnalysisFacade;
+    }
+
+    public void setRootCauseAnalysisFacade(RootCauseAnalysisFacade rootCauseAnalysisFacade) {
+        this.rootCauseAnalysisFacade = rootCauseAnalysisFacade;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
+    public TaskFacade getTaskFacade() {
+        return taskFacade;
+    }
+
+    public void setTaskFacade(TaskFacade taskFacade) {
+        this.taskFacade = taskFacade;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public DepartmentFacade getDepartmentFacade() {
+        return departmentFacade;
+    }
+
+    public void setDepartmentFacade(DepartmentFacade departmentFacade) {
+        this.departmentFacade = departmentFacade;
+    }
+
+    public CommentFacade getCommentFacade() {
+        return commentFacade;
+    }
+
+    public void setCommentFacade(CommentFacade commentFacade) {
+        this.commentFacade = commentFacade;
     }
 
     public List<Department> getDepartmentList() {

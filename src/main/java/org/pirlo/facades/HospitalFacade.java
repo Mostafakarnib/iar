@@ -10,18 +10,25 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.pirlo.entities.Hospital;
 
+/**
+ *
+ * @author Sammy Guergachi <sguergachi at gmail.com>
+ */
 @Stateless
-public class HospitalFacade extends AbstractFacade<Hospital> {
+public class HospitalFacade extends AbstractFacade<Hospital>
+{
 
     @PersistenceContext(unitName = "PIRCS_PU")
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    protected EntityManager getEntityManager()
+    {
         return em;
     }
 
-    public HospitalFacade() {
+    public HospitalFacade()
+    {
         super(Hospital.class);
     }
 

@@ -71,6 +71,7 @@
                 <iars:delete workingId="delete-root-cause" idsToRender="root_cause_table"
                              listener="#{rootCauseBean.deleteRootCauseAnalysis()}">
                 </iars:delete>
+                <ui:include src="/snippets/modals/response-root-cause-modal.xhtml" />
             </h:form>
         </ui:define>
 

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <meta charset="utf-8" />
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <title>IAR | Log in</title>
+        <title>PIRCS | Log in</title>
 
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
 
         <!-- Bootstrap 3.3.7 -->
-        <h:outputStylesheet name="bootstrap.min.css" library="plugins/bootstrap/css"></h:outputStylesheet>
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/bootstrap/css"></h:outputStylesheet>        
 
         <!-- Ionicons -->
-        <h:outputStylesheet name="ionicons.min.css" library="plugins/Ionicons/css"></h:outputStylesheet>
+        <h:outputStylesheet name="ionicons.min.css" library="plugins/Ionicons/css"></h:outputStylesheet>               
 
         <!-- Theme style -->
         <h:outputStylesheet name="AdminLTE.min.css" library="css/general"></h:outputStylesheet>
@@ -58,7 +60,7 @@
     <h:body class="hold-transition login-page">
         <div id="particles-js">
             <div id="thing" class="login-box" style="position: absolute;">
-                <div class="login-logo" style="color: white;">
+                <div class="login-logo" style="color: white;">                
                     <b>IA</b> Reporting System
                 </div>
                 <!-- /.login-logo -->
@@ -83,7 +85,7 @@
                             <!-- /.col -->
                             <div class="col-xs-4">
                                 <h:commandLink value="Sign In" class="btn btn-primary btn-block btn-flat login-btn"
-                                               action="#{loginBean.login()}">
+                                               action="#{loginBean.login()}">                                
                                 </h:commandLink>
                             </div>
                             <!-- /.col -->

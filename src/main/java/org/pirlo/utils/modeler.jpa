@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="org.pirlo.entities" v="4.4" rws="_15072161758722" Pws="_15072161758722" cws="_15072161758722" persistenceUnitName="org.pirlo-IARS-unit" sm="false" xs="false" id="_15072161758711" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="DepartmentPK" abs="false" class="Department" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1507216182852">
+        <jpa:ts e="true">
+            <jpa:a>_15072161829093</jpa:a>
+            <jpa:a>_150721632442717</jpa:a>
+            <jpa:a>_150721633730218</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_15072161829093</jpa:a>
+            <jpa:a>_150721632442717</jpa:a>
+            <jpa:a>_150721633730218</jpa:a>
+            <jpa:a>_150835513503056</jpa:a>
+            <jpa:a>_150721779090338</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_15072161829093</jpa:a>
+            <jpa:a>_150721632442717</jpa:a>
+            <jpa:a>_150721633730218</jpa:a>
+            <jpa:a>_150835513503056</jpa:a>
+            <jpa:a>_150721779090338</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_150721632442717">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150721633730218">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1508353410830" connected-attribute-id="_150835513503057" v="true" name="hospital" id="_150835513503056"/>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1507216192002" connected-attribute-id="_150721779090237" v="true" xvt="" name="reportList" id="_150721779090338">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_15072161829093">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Department.findAll">
+            <jpa:query>Select e from Department e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Department.findByName">
+            <jpa:query>Select d from Department d where d.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Department.findByInsertionDate">
+            <jpa:query>Select d from Department d where d.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TicketPK" abs="false" class="Ticket" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1507216192002">
+        <jpa:ts e="true">
+            <jpa:a>_15072161920035</jpa:a>
+            <jpa:a>_150721814095950</jpa:a>
+            <jpa:a>_150721816935851</jpa:a>
+            <jpa:a>_150721817806152</jpa:a>
+            <jpa:a>_150721818418053</jpa:a>
+            <jpa:a>_150721819443554</jpa:a>
+            <jpa:a>_150765537399718</jpa:a>
+            <jpa:a>_150765539751719</jpa:a>
+            <jpa:a>_150765569104230</jpa:a>
+            <jpa:a>_150765591792431</jpa:a>
+            <jpa:a>_150835193900016</jpa:a>
+            <jpa:a>_150835194354117</jpa:a>
+            <jpa:a>_150867668707616</jpa:a>
+            <jpa:a>_150877714611862</jpa:a>
+            <jpa:a>_150877715276663</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_15072161920035</jpa:a>
+            <jpa:a>_150721814095950</jpa:a>
+            <jpa:a>_150721816935851</jpa:a>
+            <jpa:a>_150721817806152</jpa:a>
+            <jpa:a>_150721818418053</jpa:a>
+            <jpa:a>_150721819443554</jpa:a>
+            <jpa:a>_150765537399718</jpa:a>
+            <jpa:a>_150765539751719</jpa:a>
+            <jpa:a>_150765569104230</jpa:a>
+            <jpa:a>_150765591792431</jpa:a>
+            <jpa:a>_150835193900016</jpa:a>
+            <jpa:a>_150835194354117</jpa:a>
+            <jpa:a>_150867668707616</jpa:a>
+            <jpa:a>_150877714611862</jpa:a>
+            <jpa:a>_150877715276663</jpa:a>
+            <jpa:a>_150765686252373</jpa:a>
+            <jpa:a>_150721779090237</jpa:a>
+            <jpa:a>_150765564564129</jpa:a>
+            <jpa:a>_150835452469737</jpa:a>
+            <jpa:a>_150835455209243</jpa:a>
+            <jpa:a>_150877705455059</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_15072161920035</jpa:a>
+            <jpa:a>_150721814095950</jpa:a>
+            <jpa:a>_150721816935851</jpa:a>
+            <jpa:a>_150721817806152</jpa:a>
+            <jpa:a>_150721818418053</jpa:a>
+            <jpa:a>_150721819443554</jpa:a>
+            <jpa:a>_150765537399718</jpa:a>
+            <jpa:a>_150765539751719</jpa:a>
+            <jpa:a>_150765569104230</jpa:a>
+            <jpa:a>_150765591792431</jpa:a>
+            <jpa:a>_150835193900016</jpa:a>
+            <jpa:a>_150835194354117</jpa:a>
+            <jpa:a>_150867668707616</jpa:a>
+            <jpa:a>_150877714611862</jpa:a>
+            <jpa:a>_150877715276663</jpa:a>
+            <jpa:a>_150765686252373</jpa:a>
+            <jpa:a>_150721779090237</jpa:a>
+            <jpa:a>_150765564564129</jpa:a>
+            <jpa:a>_150835452469737</jpa:a>
+            <jpa:a>_150835455209243</jpa:a>
+            <jpa:a>_150877705455059</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="reporterName" id="_150721814095950">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="apAge" id="_150721816935851">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="apmedicalNumber" id="_150721817806152">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="apgender" id="_150721818418053">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="apName" id="_150721819443554">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.OccupationStatusEnum" v="true" xvt="" name="apOccupationStatus" id="_150765537399718">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.IACategoryEnum" v="true" xvt="" name="IACategory" id="_150765539751719">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150765569104230">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="summary" id="_150765591792431">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="status" id="_150835193900016">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="severity" id="_150835194354117">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="occuranceDateTime" id="_150867668707616">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="reporterMobile" id="_150877714611862"/>
+            <jpa:basic attribute-type="String" v="true" name="reporterID" id="_150877715276663"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1507216182852" connected-attribute-id="_150721779090338" v="true" name="department" id="_150721779090237"/>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1507655529056" connected-attribute-id="_150765564564028" v="true" xvt="" name="medicationErrorList" id="_150765564564129">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1507656273725" connected-attribute-id="_150835452469736" v="true" xvt="" name="commentList" id="_150835452469737">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1508354530799" connected-attribute-id="_150835455209142" v="true" xvt="" name="taskList" id="_150835455209243">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1508776983146" connected-attribute-id="_150877705455058" v="true" xvt="" name="rootCauseAnalysisList" id="_150877705455059">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:element-collection target-class="org.pirlo.enums.IATypeEnum" collection-type="java.util.List" v="true" xvt="" name="IATypeList" id="_150765686252373">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_15072161920035">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Ticket.findAll">
+            <jpa:query>Select e from Ticket e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Report.findByReporterName">
+            <jpa:query>Select r from Ticket r where r.reporterName=:reporterName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByApAge">
+            <jpa:query>Select r from Ticket r where r.apAge=:apAge</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByApmedicalNumber">
+            <jpa:query>Select r from Ticket r where r.apmedicalNumber=:apmedicalNumber</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByApgender">
+            <jpa:query>Select r from Ticket r where r.apgender=:apgender</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByApName">
+            <jpa:query>Select r from Ticket r where r.apName=:apName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Report.findByReporterStructure">
+            <jpa:query>Select r from Ticket r where r.reporterStructure=:reporterStructure</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByApOccupationStatus">
+            <jpa:query>Select r from Ticket r where r.apOccupationStatus=:apOccupationStatus</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByIACategory">
+            <jpa:query>Select r from Ticket r where r.IACategory=:IACategory</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByIATypeList">
+            <jpa:query>Select r from Ticket r where r.IATypeList=:IATypeList</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByMedicationErrorList">
+            <jpa:query>Select r from Ticket r where r.MedicationErrorList=:MedicationErrorList</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByInsertionDate">
+            <jpa:query>Select r from Ticket r where r.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findBySummary">
+            <jpa:query>Select r from Ticket r where r.summary=:summary</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByCaseClosed">
+            <jpa:query>Select r from Ticket r where r.caseClosed=:caseClosed</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByStatus">
+            <jpa:query>Select r from Ticket r where r.status=:status</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findBySeverity">
+            <jpa:query>Select r from Ticket r where r.severity=:severity</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByRootCauseAnalysis">
+            <jpa:query>Select r from Ticket r where r.rootCauseAnalysis=:rootCauseAnalysis</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByOccuranceDateTime">
+            <jpa:query>Select t from Ticket t where t.occuranceDateTime=:occuranceDateTime</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findBySummaryApproval">
+            <jpa:query>Select t from Ticket t where t.summaryApproval=:summaryApproval</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByReporterMobile">
+            <jpa:query>Select t from Ticket t where t.reporterMobile=:reporterMobile</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Ticket.findByReporterID">
+            <jpa:query>Select t from Ticket t where t.reporterID=:reporterID</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="OperatorPK" abs="false" class="Operator" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1507216255559">
+        <jpa:ts e="true">
+            <jpa:a>_150721625555913</jpa:a>
+            <jpa:a>_150721638013119</jpa:a>
+            <jpa:a>_150721638378120</jpa:a>
+            <jpa:a>_150721639092321</jpa:a>
+            <jpa:a>_150721641911622</jpa:a>
+            <jpa:a>_150765697848775</jpa:a>
+            <jpa:a>_150835390722132</jpa:a>
+            <jpa:a>_150877671746344</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150721625555913</jpa:a>
+            <jpa:a>_150721638013119</jpa:a>
+            <jpa:a>_150721638378120</jpa:a>
+            <jpa:a>_150721639092321</jpa:a>
+            <jpa:a>_150721641911622</jpa:a>
+            <jpa:a>_150765697848775</jpa:a>
+            <jpa:a>_150835390722132</jpa:a>
+            <jpa:a>_150877671746344</jpa:a>
+            <jpa:a>_150877682644951</jpa:a>
+            <jpa:a>_150835392412433</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150721625555913</jpa:a>
+            <jpa:a>_150721638013119</jpa:a>
+            <jpa:a>_150721638378120</jpa:a>
+            <jpa:a>_150721639092321</jpa:a>
+            <jpa:a>_150721641911622</jpa:a>
+            <jpa:a>_150765697848775</jpa:a>
+            <jpa:a>_150835390722132</jpa:a>
+            <jpa:a>_150877671746344</jpa:a>
+            <jpa:a>_150877682644951</jpa:a>
+            <jpa:a>_150835392412433</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="username" id="_150721638013119">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" id="_150721638378120"/>
+            <jpa:basic attribute-type="org.pirlo.enums.OperatorTypeEnum" v="true" xvt="" name="type" id="_150721639092321">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150721641911622">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="admin" id="_150765697848775">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="title" id="_150835390722132"/>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="pirloAdmin" id="_150877671746344">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1508353410830" connected-attribute-id="_150835392412534" v="true" name="hospital" id="_150835392412433"/>
+            <jpa:one-to-one primaryKey="false" connected-entity-id="_1508776564849" connected-attribute-id="_150877682644850" v="true" name="configuration" id="_150877682644951"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1508776391928" connected-attribute-id="_150878459522372" v="true" name="user" id="_150878459522271"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150721625555913">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Operator.findAll">
+            <jpa:query>Select e from Operator e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByUsername">
+            <jpa:query>Select o from Operator o where o.username=:username</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByPassword">
+            <jpa:query>Select o from Operator o where o.password=:password</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByType">
+            <jpa:query>Select o from Operator o where o.type=:type</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByInsertionDate">
+            <jpa:query>Select o from Operator o where o.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByAdmin">
+            <jpa:query>Select o from Operator o where o.admin=:admin</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByTitle">
+            <jpa:query>Select o from Operator o where o.title=:title</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByTitle">
+            <jpa:query>Select o from Operator o where o.title=:title</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operator.findByPirloAdmin">
+            <jpa:query>Select o from Operator o where o.pirloAdmin=:pirloAdmin</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="MedicationErrorPK" abs="false" class="MedicationError" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1507655529056">
+        <jpa:ts e="true">
+            <jpa:a>_150765552906022</jpa:a>
+            <jpa:a>_150765557153524</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150765552906022</jpa:a>
+            <jpa:a>_150765557153524</jpa:a>
+            <jpa:a>_150765691179274</jpa:a>
+            <jpa:a>_150765564564028</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150765552906022</jpa:a>
+            <jpa:a>_150765557153524</jpa:a>
+            <jpa:a>_150765691179274</jpa:a>
+            <jpa:a>_150765564564028</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="org.pirlo.enums.MEEnum" v="true" xvt="" name="errorType" id="_150765557153524">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1507216192002" connected-attribute-id="_150765564564129" v="true" name="ticket" id="_150765564564028"/>
+            <jpa:element-collection target-class="org.pirlo.enums.METypeEnum" collection-type="java.util.List" v="true" xvt="" name="ErrorDetailList" id="_150765691179274">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150765552906022">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="errorType.findAll">
+            <jpa:query>Select e from errorType e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="MedicationError.findByErrorType">
+            <jpa:query>Select m from errorType m where m.errorType=:errorType</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="errorType.findByErrorDetailList">
+            <jpa:query>Select m from errorType m where m.ErrorDetailList=:ErrorDetailList</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CommentPK" abs="false" class="Comment" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1507656273725">
+        <jpa:ts e="true">
+            <jpa:a>_150765627372941</jpa:a>
+            <jpa:a>_150765628304243</jpa:a>
+            <jpa:a>_150765636055946</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150765627372941</jpa:a>
+            <jpa:a>_150765628304243</jpa:a>
+            <jpa:a>_150765636055946</jpa:a>
+            <jpa:a>_150835510469255</jpa:a>
+            <jpa:a>_150835452469736</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150765627372941</jpa:a>
+            <jpa:a>_150765628304243</jpa:a>
+            <jpa:a>_150765636055946</jpa:a>
+            <jpa:a>_150835510469255</jpa:a>
+            <jpa:a>_150835452469736</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="description" id="_150765628304243">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150765636055946">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1507216192002" connected-attribute-id="_150835452469737" v="true" name="ticket" id="_150835452469736"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1507216255559" v="true" name="operator" id="_150835510469255"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150765627372941">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Comment.findAll">
+            <jpa:query>Select e from Comment e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Comment.findByDescription">
+            <jpa:query>Select c from Comment c where c.description=:description</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Comment.findByInsertionDate">
+            <jpa:query>Select c from Comment c where c.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508353410830">
+        <jpa:ts e="true">
+            <jpa:a>_150835341083520</jpa:a>
+            <jpa:a>_150835341676322</jpa:a>
+            <jpa:a>_150835341851023</jpa:a>
+            <jpa:a>_150835342212124</jpa:a>
+            <jpa:a>_150835394185735</jpa:a>
+            <jpa:a>_150877645828138</jpa:a>
+            <jpa:a>_150877647610039</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150835341083520</jpa:a>
+            <jpa:a>_150835341676322</jpa:a>
+            <jpa:a>_150835341851023</jpa:a>
+            <jpa:a>_150835342212124</jpa:a>
+            <jpa:a>_150835394185735</jpa:a>
+            <jpa:a>_150877645828138</jpa:a>
+            <jpa:a>_150877647610039</jpa:a>
+            <jpa:a>_150835392412534</jpa:a>
+            <jpa:a>_150835513503057</jpa:a>
+            <jpa:a>_150877652639841</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150835341083520</jpa:a>
+            <jpa:a>_150835341676322</jpa:a>
+            <jpa:a>_150835341851023</jpa:a>
+            <jpa:a>_150835342212124</jpa:a>
+            <jpa:a>_150835394185735</jpa:a>
+            <jpa:a>_150877645828138</jpa:a>
+            <jpa:a>_150877647610039</jpa:a>
+            <jpa:a>_150835392412534</jpa:a>
+            <jpa:a>_150835513503057</jpa:a>
+            <jpa:a>_150877652639841</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_150835341676322"/>
+            <jpa:basic attribute-type="String" v="true" name="address" id="_150835341851023"/>
+            <jpa:basic attribute-type="String" v="true" name="insertionDate" id="_150835342212124"/>
+            <jpa:basic attribute-type="String" v="true" name="subscriptionFees" id="_150835394185735"/>
+            <jpa:basic attribute-type="String" v="true" name="systemEmail" id="_150877645828138"/>
+            <jpa:basic attribute-type="String" v="true" name="systemEmailPassword" id="_150877647610039"/>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1507216255559" connected-attribute-id="_150835392412433" v="true" xvt="" name="operatorList" id="_150835392412534">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1507216182852" connected-attribute-id="_150835513503056" v="true" xvt="" name="departmentList" id="_150835513503057">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1508776391928" connected-attribute-id="_150877652639740" v="true" xvt="" name="userList" id="_150877652639841">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150835341083520">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Hospital.findAll">
+            <jpa:query>Select e from Hospital e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByName">
+            <jpa:query>Select h from Hospital h where h.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByAddress">
+            <jpa:query>Select h from Hospital h where h.address=:address</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByInsertionDate">
+            <jpa:query>Select h from Hospital h where h.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findBySubscriptionFees">
+            <jpa:query>Select h from Hospital h where h.subscriptionFees=:subscriptionFees</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findBySystemEmail">
+            <jpa:query>Select h from Hospital h where h.systemEmail=:systemEmail</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findBySystemEmailPassword">
+            <jpa:query>Select h from Hospital h where h.systemEmailPassword=:systemEmailPassword</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskPK" abs="false" class="Task" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508354530799">
+        <jpa:ts e="true">
+            <jpa:a>_150835453080138</jpa:a>
+            <jpa:a>_150835453544740</jpa:a>
+            <jpa:a>_150835453993341</jpa:a>
+            <jpa:a>_150835487551949</jpa:a>
+            <jpa:a>_150835488179050</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150835453080138</jpa:a>
+            <jpa:a>_150835453544740</jpa:a>
+            <jpa:a>_150835453993341</jpa:a>
+            <jpa:a>_150835487551949</jpa:a>
+            <jpa:a>_150835488179050</jpa:a>
+            <jpa:a>_150835455209142</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150835453080138</jpa:a>
+            <jpa:a>_150835453544740</jpa:a>
+            <jpa:a>_150835453993341</jpa:a>
+            <jpa:a>_150835487551949</jpa:a>
+            <jpa:a>_150835488179050</jpa:a>
+            <jpa:a>_150835455209142</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="details" id="_150835453544740"/>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="insertionDate" id="_150835453993341">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="endDate" id="_150835487551949">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="status" id="_150835488179050"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1507216192002" connected-attribute-id="_150835455209243" v="true" name="ticket" id="_150835455209142"/>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1508783699754" connected-attribute-id="_150878372034167" v="true" xvt="" name="taskFeedbackList" id="_150878372034268">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150835453080138">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Task.findAll">
+            <jpa:query>Select e from Task e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Task.findByDetails">
+            <jpa:query>Select t from Task t where t.details=:details</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Task.findByInsertionDate">
+            <jpa:query>Select t from Task t where t.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Task.findByStartDate">
+            <jpa:query>Select t from Task t where t.startDate=:startDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Task.findByEndDate">
+            <jpa:query>Select t from Task t where t.endDate=:endDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Task.findByStatus">
+            <jpa:query>Select t from Task t where t.status=:status</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserPK" abs="false" class="User" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508776391928">
+        <jpa:ts e="true">
+            <jpa:a>_150877639194331</jpa:a>
+            <jpa:a>_150877640033333</jpa:a>
+            <jpa:a>_150877640779334</jpa:a>
+            <jpa:a>_150877640956235</jpa:a>
+            <jpa:a>_150877641247036</jpa:a>
+            <jpa:a>_150877641747637</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150877639194331</jpa:a>
+            <jpa:a>_150877640033333</jpa:a>
+            <jpa:a>_150877640779334</jpa:a>
+            <jpa:a>_150877640956235</jpa:a>
+            <jpa:a>_150877641247036</jpa:a>
+            <jpa:a>_150877641747637</jpa:a>
+            <jpa:a>_150877652639740</jpa:a>
+            <jpa:a>_150877707723961</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150877639194331</jpa:a>
+            <jpa:a>_150877640033333</jpa:a>
+            <jpa:a>_150877640779334</jpa:a>
+            <jpa:a>_150877640956235</jpa:a>
+            <jpa:a>_150877641247036</jpa:a>
+            <jpa:a>_150877641747637</jpa:a>
+            <jpa:a>_150877652639740</jpa:a>
+            <jpa:a>_150877707723961</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="email" id="_150877640033333"/>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_150877640779334"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150877640956235">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="mobile" id="_150877641247036"/>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="details" id="_150877641747637">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1508353410830" connected-attribute-id="_150877652639841" v="true" name="hospital" id="_150877652639740"/>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1508776983146" connected-attribute-id="_150877707723960" v="true" xvt="" name="rootCauseAnalysisList" id="_150877707723961">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1508783699754" connected-attribute-id="_150878374659669" v="true" xvt="" name="taskFeedbackList" id="_150878374659670">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-one primaryKey="false" connected-entity-id="_1507216255559" connected-attribute-id="_150878459522271" v="true" name="operator" id="_150878459522372"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150877639194331">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="User.findAll">
+            <jpa:query>Select e from User e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByEmail">
+            <jpa:query>Select u from User u where u.email=:email</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByName">
+            <jpa:query>Select u from User u where u.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByInsertionDate">
+            <jpa:query>Select u from User u where u.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByMobile">
+            <jpa:query>Select u from User u where u.mobile=:mobile</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByDetails">
+            <jpa:query>Select u from User u where u.details=:details</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ConfigurationPK" abs="false" class="Configuration" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508776564849">
+        <jpa:ts e="true">
+            <jpa:a>_150877656485642</jpa:a>
+            <jpa:a>_150877677649447</jpa:a>
+            <jpa:a>_150877679689548</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150877656485642</jpa:a>
+            <jpa:a>_150877677649447</jpa:a>
+            <jpa:a>_150877679689548</jpa:a>
+            <jpa:a>_150877682644850</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150877656485642</jpa:a>
+            <jpa:a>_150877677649447</jpa:a>
+            <jpa:a>_150877679689548</jpa:a>
+            <jpa:a>_150877682644850</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="org.pirlo.enums.LangEnum" v="true" xvt="" name="lang" id="_150877677649447">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150877679689548">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1507216255559" connected-attribute-id="_150877682644951" v="true" name="operator" id="_150877682644850"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150877656485642">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Configuration.findAll">
+            <jpa:query>Select e from Configuration e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Configuration.findByLang">
+            <jpa:query>Select e from Configuration e where e.lang=:lang</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Configuration.findByInsertionDate">
+            <jpa:query>Select c from Configuration c where c.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Configuration.findByAttribute">
+            <jpa:query>Select c from Configuration c where c.attribute=:attribute</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="NotificationPK" abs="false" class="Notification" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508776765079">
+        <jpa:ts e="true">
+            <jpa:a>_150877676508545</jpa:a>
+            <jpa:a>_150877694724052</jpa:a>
+            <jpa:a>_150877695835853</jpa:a>
+            <jpa:a>_150878116735464</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150877676508545</jpa:a>
+            <jpa:a>_150877694724052</jpa:a>
+            <jpa:a>_150877695835853</jpa:a>
+            <jpa:a>_150878116735464</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150877676508545</jpa:a>
+            <jpa:a>_150877694724052</jpa:a>
+            <jpa:a>_150877695835853</jpa:a>
+            <jpa:a>_150878116735464</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="details" id="_150877694724052">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="insertionDate" id="_150877695835853">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.NotificationEnum" v="true" xvt="" name="type" id="_150878116735464">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150877676508545">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Notification.findAll">
+            <jpa:query>Select e from Notification e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Notification.findByDetails">
+            <jpa:query>Select n from Notification n where n.details=:details</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Notification.findByInsertionDate">
+            <jpa:query>Select n from Notification n where n.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Notification.findByType">
+            <jpa:query>Select n from Notification n where n.type=:type</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="RootCauseAnalysisPK" abs="false" class="RootCauseAnalysis" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508776983146">
+        <jpa:ts e="true">
+            <jpa:a>_150877698315454</jpa:a>
+            <jpa:a>_150877700629056</jpa:a>
+            <jpa:a>_150877700979957</jpa:a>
+        </jpa:ts>
+        <jpa:hc e="true">
+            <jpa:a>_150877698315454</jpa:a>
+            <jpa:a>_150877700629056</jpa:a>
+            <jpa:a>_150877700979957</jpa:a>
+        </jpa:hc>
+        <jpa:eq e="true">
+            <jpa:a>_150877698315454</jpa:a>
+            <jpa:a>_150877700629056</jpa:a>
+            <jpa:a>_150877700979957</jpa:a>
+        </jpa:eq>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="details" id="_150877700629056"/>
+            <jpa:basic attribute-type="String" v="true" name="insertionDate" id="_150877700979957"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1507216192002" connected-attribute-id="_150877705455059" v="true" name="ticket" id="_150877705455058"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1508776391928" connected-attribute-id="_150877707723961" v="true" name="user" id="_150877707723960"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150877698315454">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="RootCauseAnalysis.findAll">
+            <jpa:query>Select e from RootCauseAnalysis e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="RootCauseAnalysis.findByDetails">
+            <jpa:query>Select r from RootCauseAnalysis r where r.details=:details</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="RootCauseAnalysis.findByInsertionDate">
+            <jpa:query>Select r from RootCauseAnalysis r where r.insertionDate=:insertionDate</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskFeedbackPK" abs="false" class="TaskFeedback" v="true" xre="false" m="false" rootElement="_15072161758711" id="_1508783699754">
+        <jpa:ath>Sammy Guergachi &lt;sguergachi at gmail.com&gt;</jpa:ath>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1508354530799" connected-attribute-id="_150878372034268" v="true" name="task" id="_150878372034167"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1508776391928" connected-attribute-id="_150878374659670" v="true" name="user" id="_150878374659669"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_150878369977465">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TaskFeedback.findAll">
+            <jpa:query>Select e from TaskFeedback e</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15072161758722">
+            <i ref="_1508776391928" x="857" y="302"/>
+            <i ref="_1507655529056" x="974" y="742"/>
+            <i ref="_1508353410830" x="46" y="481"/>
+            <i ref="_1508776765079" x="1200" y="302"/>
+            <i ref="_1507216255559" x="278" y="240"/>
+            <i ref="_1508783699754" x="1138" y="122"/>
+            <i ref="_1508354530799" x="893" y="32"/>
+            <i ref="_1507216192002" x="581" y="302"/>
+            <i ref="_1508776564849" x="46" y="52"/>
+            <i ref="_1508776983146" x="1122" y="513"/>
+            <i ref="_1507656273725" x="538" y="32"/>
+            <i ref="_1507216182852" x="319" y="712"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>

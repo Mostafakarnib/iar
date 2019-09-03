@@ -85,6 +85,9 @@
                                     <ui:include src="/snippets/modals/password-modal.xhtml" />
 
                                 </div>
+                                <iars:delete workingId="delete-operator" idsToRender="operators_table"
+                                             listener="#{operatorBean.deleteOperator()}">
+                                </iars:delete>
                             </div>
                         </div>
                     </div>
@@ -92,5 +95,6 @@
             </h:form>
         </ui:define>
     </ui:composition>
+
 </html>
 

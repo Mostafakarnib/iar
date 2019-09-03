@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.iar</groupId>
-    <artifactId>iar</artifactId>
+    <groupId>org.pircs</groupId>
+    <artifactId>pircs</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <properties>
@@ -105,7 +105,7 @@
     </dependencies>
 
     <build>
-        <finalName>iar</finalName>
+        <finalName>pircs</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
@@ -116,5 +116,5 @@
             </plugin>
         </plugins>
     </build>
-    <name>iar</name>
+    <name>pircs</name>
 </project>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="dashboard::#views#dashboard.xhtml"
+    NAME="output" PATH="/views/dashboard.xhtml"
+    TARGET="rules:#views#dashboard.xhtml" TITLE="dashboard" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="report::#views#process#report.xhtml"
+    NAME="output" PATH="/views/process/report.xhtml"
+    TARGET="rules:#views#process#report.xhtml" TITLE="report" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="flowchart::#views#process#flowchart.xhtml"
+    NAME="output" PATH="/views/process/flowchart.xhtml"
+    TARGET="rules:#views#process#flowchart.xhtml" TITLE="flowchart" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::3" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::3" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="release::#views#release#release.xhtml"
+    NAME="output" PATH="/views/release/release.xhtml"
+    TARGET="rules:#views#release#release.xhtml" TITLE="release" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::4" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::4" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="releases::#views#release#releases.xhtml"
+    NAME="output" PATH="/views/release/releases.xhtml"
+    TARGET="rules:#views#release#releases.xhtml" TITLE="releases" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::5" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::5" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="process::#views#process#process.xhtml"
+    NAME="output" PATH="/views/process/process.xhtml"
+    TARGET="rules:#views#process#process.xhtml" TITLE="process" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::6" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::6" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="processes::#views#process#processes.xhtml"
+    NAME="output" PATH="/views/process/processes.xhtml"
+    TARGET="rules:#views#process#processes.xhtml" TITLE="processes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::7" SHAPE="32,1025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::7" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="indicator::#views#measure#indicator.xhtml"
+    NAME="output" PATH="/views/measure/indicator.xhtml"
+    TARGET="rules:#views#measure#indicator.xhtml" TITLE="indicator" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::8" SHAPE="32,1137,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::8" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="risk::#views#measure#risk.xhtml"
+    NAME="output" PATH="/views/measure/risk.xhtml"
+    TARGET="rules:#views#measure#risk.xhtml" TITLE="risk" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::9" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::9" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="users::#views#users.xhtml" NAME="output"
+    PATH="/views/users.xhtml" TARGET="rules:#views#users.xhtml"
+    TITLE="users" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::10" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::10" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="process-report::#views#process#process-report.xhtml"
+    NAME="output" PATH="/views/process/process-report.xhtml"
+    TARGET="rules:#views#process#process-report.xhtml"
+    TITLE="process-report" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#process#process.xhtml"
+  PATH="/views/process/process.xhtml" SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#release#log.xhtml"
+  PATH="/views/release/log.xhtml" SHAPE="240,1377,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#release#releases.xhtml"
+  PATH="/views/release/releases.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#release#release.xhtml"
+  PATH="/views/release/release.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#process#processes.xhtml"
+  PATH="/views/process/processes.xhtml" SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#measure#risk.xhtml"
+  PATH="/views/measure/risk.xhtml" SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#users.xhtml" PATH="/views/users.xhtml"
+  SHAPE="240,1153,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#process#report.xhtml"
+  PATH="/views/process/report.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#measure#indicator.xhtml"
+  PATH="/views/measure/indicator.xhtml" SHAPE="240,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#process#process-report.xhtml"
+  PATH="/views/process/process-report.xhtml" SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#dashboard.xhtml"
+  PATH="/views/dashboard.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::11" SHAPE="32,1473,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::11" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="log::#views#release#log.xhtml" NAME="output"
+    PATH="/views/release/log.xhtml"
+    TARGET="rules:#views#release#log.xhtml" TITLE="log" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#configuration.xhtml"
+  PATH="/views/configuration.xhtml" SHAPE="240,1489,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::12" SHAPE="32,1585,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::12" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="configuration::#views#configuration.xhtml"
+    NAME="output" PATH="/views/configuration.xhtml"
+    TARGET="rules:#views#configuration.xhtml" TITLE="configuration" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#profile.xhtml"
+  PATH="/views/profile.xhtml" SHAPE="240,1601,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::13" SHAPE="32,1697,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::13" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="profile::#views#profile.xhtml" NAME="output"
+    PATH="/views/profile.xhtml" TARGET="rules:#views#profile.xhtml"
+    TITLE="profile" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#process#flowchart.xhtml"
+  PATH="/views/process/flowchart.xhtml" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="org.pirlo.entities" v="4.4" rws="_150920477482793" cws="_150920477482793" sm="false" xs="false" id="_15092047743891" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="OperatorPK" abs="false" class="Operator" v="true" xre="false" m="false" rootElement="_15092047743891" id="_15092047744152">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="username" ft="false" id="_15092047744184">
+                <jpa:column name="col_username" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" ft="false" id="_15092047744185">
+                <jpa:column name="col_password" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.OperatorTypeEnum" v="true" name="type" ft="false" id="_15092047744186">
+                <jpa:column name="col_operator_type" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_15092047744218">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="admin" ft="false" id="_15092047744219">
+                <jpa:column name="col_admin" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_150920477442110">
+                <jpa:column name="col_title" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="pirloAdmin" ft="false" id="_150920477442211">
+                <jpa:column name="col_pirlo_admin" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477447145" connected-attribute-id="_150920477447153" v="true" name="hospital" ft="false" id="_150920477442213"/>
+            <jpa:one-to-one own="false" primaryKey="false" connected-entity-id="_150920477447955" connected-attribute-id="_150920477447959" v="true" name="configuration" ft="false" id="_150920477442212"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_15092047744173">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Operator.findAll">
+            <jpa:query>SELECT o FROM Operator o</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Operator.findById">
+            <jpa:query>SELECT o FROM Operator o WHERE o.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Operator.FindByUsername">
+            <jpa:query>SELECT o FROM Operator o WHERE o.username = :username</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_operator"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="DepartmentPK" abs="false" class="Department" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477442914">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150920477442916">
+                <jpa:column name="col_name" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477443017">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477447145" connected-attribute-id="_150920477447354" v="true" name="hospital" ft="false" id="_150920477443018"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477449365" connected-attribute-id="_150920477449782" v="true" name="reportList" ft="false" id="_150920477443019"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477442915">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Department.findAll">
+            <jpa:query>SELECT d FROM Department d</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Department.findById">
+            <jpa:query>SELECT d FROM Department d WHERE d.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_department"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="MedicationErrorPK" abs="false" class="MedicationError" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477443920">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="org.pirlo.enums.MEEnum" v="true" name="errorType" ft="false" id="_150920477443922">
+                <jpa:column name="col_type" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477443923">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477449365" connected-attribute-id="_150920477449783" v="true" name="ticket" ft="false" id="_150920477443924"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477443921">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="MedicationError.findAll">
+            <jpa:query>SELECT m FROM MedicationError m</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="MedicationError.findById">
+            <jpa:query>SELECT m FROM MedicationError m WHERE m.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_medication_error"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CommentPK" abs="false" class="Comment" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477444725">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_150920477444727">
+                <jpa:column name="col_description" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477444728">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477449365" connected-attribute-id="_150920477449784" v="true" name="ticket" ft="false" id="_150920477444730"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_15092047744152" v="true" name="operator" ft="false" id="_150920477444729"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477444726">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Comment.findAll">
+            <jpa:query>SELECT c FROM Comment c</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Comment.findById">
+            <jpa:query>SELECT c FROM Comment c WHERE c.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_comment"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskPK" abs="false" class="Task" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477445531">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_150920477445533">
+                <jpa:column name="col_details" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477445534">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="endDate" ft="false" id="_150920477445535">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_end_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.TaskStatusEnum" v="true" name="status" ft="false" id="_150920477445536">
+                <jpa:column name="col_status" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477449365" connected-attribute-id="_150920477449785" v="true" name="ticket" ft="false" id="_150920477445537"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477448660" connected-attribute-id="_150920477448662" v="true" name="taskFeedbackList" ft="false" id="_150920477445538"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477445532">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Task.findAll">
+            <jpa:query>SELECT t FROM Task t</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Task.findById">
+            <jpa:query>SELECT t FROM Task t WHERE t.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_task"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="RootCauseAnalysisPK" abs="false" class="RootCauseAnalysis" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477446439">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_150920477446441">
+                <jpa:column name="col_details" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477446442">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477449365" connected-attribute-id="_150920477449786" v="true" name="ticket" ft="false" id="_150920477446443"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_15092047744152" v="true" name="user" ft="false" id="_150920477446444"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477446440">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="RootCauseAnalysis.findAll">
+            <jpa:query>SELECT r FROM RootCauseAnalysis r</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="RootCauseAnalysis.findById">
+            <jpa:query>SELECT r FROM RootCauseAnalysis r WHERE r.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_root_cause_analysis"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477447145">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150920477447147">
+                <jpa:column name="col_name" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="address" ft="false" id="_150920477447148">
+                <jpa:column name="col_address" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477447149">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="float" v="true" name="subscriptionFees" ft="false" id="_150920477447150">
+                <jpa:column name="col_fees" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="systemEmail" ft="false" id="_150920477447151">
+                <jpa:column name="col_sys_email" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="systemEmailPassword" ft="false" id="_150920477447152">
+                <jpa:column name="col_sys_email_password" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_15092047744152" connected-attribute-id="_150920477442213" v="true" name="operatorList" ft="false" id="_150920477447153"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477442914" connected-attribute-id="_150920477443018" v="true" name="departmentList" ft="false" id="_150920477447354"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477447146">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Hospital.findAll">
+            <jpa:query>SELECT h FROM Hospital h</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Hospital.findById">
+            <jpa:query>SELECT h FROM Hospital h WHERE h.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_hospital"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ConfigurationPK" abs="false" class="Configuration" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477447955">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="org.pirlo.enums.LangEnum" v="true" name="lang" ft="false" id="_150920477447957">
+                <jpa:column name="col_lang" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477447958">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_15092047744152" connected-attribute-id="_150920477442212" v="true" name="operator" ft="false" id="_150920477447959"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477447956">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Configuration.findAll">
+            <jpa:query>SELECT c FROM Configuration c</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Configuration.findById">
+            <jpa:query>SELECT c FROM Configuration c WHERE c.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_configuration"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskFeedbackPK" abs="false" class="TaskFeedback" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477448660">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477448663">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477445531" connected-attribute-id="_150920477445538" v="true" name="task" ft="false" id="_150920477448662"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_15092047744152" v="true" name="user" ft="false" id="_150920477448664"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477448661">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="TaskFeedback.findAll">
+            <jpa:query>SELECT t FROM TaskFeedback t</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TaskFeedback.findById">
+            <jpa:query>SELECT t FROM TaskFeedback t WHERE t.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_task_feed_back"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TicketPK" abs="false" class="Ticket" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477449365">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="reporterName" ft="false" id="_150920477449367">
+                <jpa:column name="col_reporter_name" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="apAge" ft="false" id="_150920477449368">
+                <jpa:column name="col_affected_person_age" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="apmedicalNumber" ft="false" id="_150920477449369">
+                <jpa:column name="col_affected_person_medical_num" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="apName" ft="false" id="_150920477449370">
+                <jpa:column name="col_affected_person_name" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.OccupationStatusEnum" v="true" name="apOccupationStatus" ft="false" id="_150920477449371">
+                <jpa:column name="col_occupational_status" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.IACategoryEnum" v="true" name="IACategory" ft="false" id="_150920477449372">
+                <jpa:column name="col_ia_category" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477449373">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="summary" ft="false" id="_150920477449374">
+                <jpa:column name="col_summary" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.GenderEnum" v="true" name="apgender" ft="false" id="_150920477449375">
+                <jpa:column name="col_affected_person_gender" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.TicketStatusEnum" v="true" name="status" ft="false" id="_150920477449476">
+                <jpa:column name="col_status" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.SeverityEnum" v="true" name="severity" ft="false" id="_150920477449477">
+                <jpa:column name="col_severity" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="occuranceDateTime" ft="false" id="_150920477449478">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_occurance_datetime" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="reporterMobile" ft="false" id="_150920477449479">
+                <jpa:column name="col_reporter_mobile" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="reporterID" ft="false" id="_150920477449480">
+                <jpa:column name="col_reporter_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150920477442914" connected-attribute-id="_150920477443019" v="true" name="department" ft="false" id="_150920477449782"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477443920" connected-attribute-id="_150920477443924" v="true" name="medicationErrorList" ft="false" id="_150920477449783"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477444725" connected-attribute-id="_150920477444730" v="true" name="commentList" ft="false" id="_150920477449784"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477445531" connected-attribute-id="_150920477445537" v="true" name="taskList" ft="false" id="_150920477449785"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_150920477446439" connected-attribute-id="_150920477446443" v="true" name="rootCauseAnalysisList" ft="false" id="_150920477449786"/>
+            <jpa:element-collection target-class="org.pirlo.enums.IATypeEnum" collection-type="java.util.List" v="true" name="IATypeList" ft="false" id="_150920477449481">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477449366">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Ticket.findAll">
+            <jpa:query>SELECT t FROM Ticket t</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Ticket.findById">
+            <jpa:query>SELECT t FROM Ticket t WHERE t.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_ticket"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="NotificationPK" abs="false" class="Notification" v="true" xre="false" m="false" rootElement="_15092047743891" id="_150920477450387">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_150920477450389">
+                <jpa:column name="col_details" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="insertionDate" ft="false" id="_150920477450391">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="col_insertion_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="org.pirlo.enums.NotificationEnum" v="true" name="type" ft="false" id="_150920477450392">
+                <jpa:column name="col_type" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_15092047744152" v="true" name="operator" ft="false" id="_150920477450390"/>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150920477450388">
+                <jpa:column name="col_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Notification.findAll">
+            <jpa:query>SELECT n FROM Notification n</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Notification.findById">
+            <jpa:query>SELECT n FROM Notification n WHERE n.id = :id</jpa:query>
+        </jpa:nq>
+        <jpa:table name="tbl_notification"/>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_150920477482793">
+            <i ref="_150920477445531" x="490" y="32"/>
+            <i ref="_150920477447145" x="123" y="32"/>
+            <i ref="_150920477447955" x="477" y="745"/>
+            <i ref="_150920477450387" x="36" y="584"/>
+            <i ref="_150920477443920" x="477" y="980"/>
+            <i ref="_150920477444725" x="77" y="1121"/>
+            <i ref="_150920477446439" x="718" y="499"/>
+            <i ref="_15092047744152" x="347" y="297"/>
+            <i ref="_150920477449365" x="815" y="826"/>
+            <i ref="_150920477448660" x="702" y="297"/>
+            <i ref="_150920477442914" x="35" y="338"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>

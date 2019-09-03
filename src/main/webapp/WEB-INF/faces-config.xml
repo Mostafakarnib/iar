@@ -19,5 +19,92 @@
         <message-bundle>resources.messages</message-bundle>
     </application>
 
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>new-ticket</from-outcome>
+            <to-view-id>/views/new-ticket.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>edit-ticket</from-outcome>
+            <to-view-id>/views/edit-ticket.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>notifications</from-outcome>
+            <to-view-id>/views/notifications.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>tasks</from-outcome>
+            <to-view-id>/views/tasks.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>root-cause-analysis</from-outcome>
+            <to-view-id>/views/root-cause-analysis.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ticket</from-outcome>
+            <to-view-id>/views/ticket.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>tickets</from-outcome>
+            <to-view-id>/views/tickets.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>operators</from-outcome>
+            <to-view-id>/views/management/operators.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>departments</from-outcome>
+            <to-view-id>/views/management/departments.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>hospitals</from-outcome>
+            <to-view-id>/views/pirlo/hospitals.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>dashboard</from-outcome>
+            <to-view-id>/views/dashboard.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>

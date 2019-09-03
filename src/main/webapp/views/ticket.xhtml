@@ -33,12 +33,18 @@
                     <div class="tab-content">
 
                         <div id="tab_info" class="tab-pane fade in active">
-                            <ui:include src="" />
+                            <ui:include src="/snippets/sections/ticket-info.xhtml" />
+                        </div>
+
+                        <div id="tab_root" class="tab-pane fade">
+                            <ui:include src="/snippets/sections/ticket-analysis.xhtml" />
+                        </div>
+
+                        <div id="tab_tasks" class="tab-pane fade">
+                            <ui:include src="/snippets/sections/ticket-tasks.xhtml" />
                         </div>
 
                     </div>
-
-                </div>
                 </div>
 
             </h:form>

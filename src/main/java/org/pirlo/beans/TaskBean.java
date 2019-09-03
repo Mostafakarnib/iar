@@ -16,7 +16,8 @@ import org.pirlo.facades.TaskFacade;
 
 @ManagedBean
 @ViewScoped
-public class TaskBean implements Serializable {
+public class TaskBean implements Serializable
+{
 
     @ManagedProperty(value = "#{utilityBean}")
     UtilityBean utilityBean;
@@ -34,39 +35,53 @@ public class TaskBean implements Serializable {
     List<Operator> operatorList = new ArrayList<>();
 
     @PostConstruct
-    public void init() {
-        try {
+    public void init()
+    {
+        try
+        {
             operatorList = operatorFacade.findByHospital(loginBean.operator.getHospital());
-
-            taskList = taskFacade.findAll();
-
-        } catch (Exception e) {
+            if ((loginBean.operator.getType().getBundleKey()).equalsIgnoreCase("QUALITY_MANAGER"))
+            {
+                taskList = taskFacade.findAll();
+            } else
+            {
+                taskList = taskFacade.findTaskByOperator(loginBean.operator);
+            }
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
-    public void saveTask() {
+    public void saveTask()
+    {
         boolean check = false;
-        if (task.getId() == null) {
+        if (task.getId() == null)
+        {
             check = true;
         }
         task.setStatus(TaskStatusEnum.FINISHED);
         task = taskFacade.save(task);
-        if (check) {
+        if (check)
+        {
             taskList.add(task);
         }
         utilityBean.hideModal("result-task-dlg");
     }
 
-    public void selectTask(Task tmpTask) {
+    public void selectTask(Task tmpTask)
+    {
         task = tmpTask;
-        if (task == null) {
+        if (task == null)
+        {
             task = new Task();
         }
     }
 
-    public void toggleTaskStatus(Task tmpTask) {
-        switch (tmpTask.getStatus()) {
+    public void toggleTaskStatus(Task tmpTask)
+    {
+        switch (tmpTask.getStatus())
+        {
             case NEW:
                 tmpTask.setStatus(TaskStatusEnum.IN_PROGRESS);
                 break;
@@ -79,64 +94,79 @@ public class TaskBean implements Serializable {
         tmpTask = taskFacade.save(tmpTask);
     }
 
-    public void deleteTask() {
+    public void deleteTask()
+    {
         taskList.remove(task);
         taskFacade.remove(task);
     }
 
-    public UtilityBean getUtilityBean() {
+    public UtilityBean getUtilityBean()
+    {
         return utilityBean;
     }
 
-    public void setUtilityBean(UtilityBean utilityBean) {
+    public void setUtilityBean(UtilityBean utilityBean)
+    {
         this.utilityBean = utilityBean;
     }
 
-    public LoginBean getLoginBean() {
+    public LoginBean getLoginBean()
+    {
         return loginBean;
     }
 
-    public void setLoginBean(LoginBean loginBean) {
+    public void setLoginBean(LoginBean loginBean)
+    {
         this.loginBean = loginBean;
     }
 
-    public TaskFacade getTaskFacade() {
+    public TaskFacade getTaskFacade()
+    {
         return taskFacade;
     }
 
-    public void setTaskFacade(TaskFacade taskFacade) {
+    public void setTaskFacade(TaskFacade taskFacade)
+    {
         this.taskFacade = taskFacade;
     }
 
-    public Task getTask() {
+    public Task getTask()
+    {
         return task;
     }
 
-    public void setTask(Task task) {
+    public void setTask(Task task)
+    {
         this.task = task;
     }
 
-    public List<Task> getTaskList() {
+    public List<Task> getTaskList()
+    {
         return taskList;
     }
 
-    public void setTaskList(List<Task> taskList) {
+    public void setTaskList(List<Task> taskList)
+    {
         this.taskList = taskList;
     }
 
-    public OperatorFacade getOperatorFacade() {
+    public OperatorFacade getOperatorFacade()
+    {
         return operatorFacade;
     }
 
-    public void setOperatorFacade(OperatorFacade operatorFacade) {
+    public void setOperatorFacade(OperatorFacade operatorFacade)
+    {
         this.operatorFacade = operatorFacade;
     }
 
-    public List<Operator> getOperatorList() {
+    public List<Operator> getOperatorList()
+    {
         return operatorList;
     }
 
-    public void setOperatorList(List<Operator> operatorList) {
+    public void setOperatorList(List<Operator> operatorList)
+    {
         this.operatorList = operatorList;
     }
 

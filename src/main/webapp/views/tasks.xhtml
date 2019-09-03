@@ -58,11 +58,38 @@
                             </h:outputText>
                         </p:column>
 
+                        <p:column headerText="#{bundle.CONTROL}" width="75" >
+                            <div class="btn-group">
+                                <h:commandLink class="btn btn-info"
+                                               onclick="$('.view-task-dlg').modal('show')"
+                                               action="#{taskBean.selectTask(task)}">
+                                    <i class="fa fa-eye" />
+                                    <f:ajax render="view-task_panel"/>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success"
+                                               rendered="#{ticketBean.loginBean.operator.type !='QUALITY_MANAGER' and
+                                                           task.status.bundleKey !='finished'}"
+                                               onclick="$('.result-task-dlg').modal('show')"
+                                               action="#{taskBean.selectTask(task)}">
+                                    <i class="fa fa-reply" />
+                                    <f:ajax render="result-task_panel"/>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger open-popover"
+                                               rendered="#{ticketBean.loginBean.operator.type =='QUALITY_MANAGER'}"
+                                               action="#{taskBean.selectTask(task)}"
+                                               onclick="openDeletePopover(this, 'delete-task')">
+                                    <i class="fa fa-remove open-popover" />
+                                    <f:ajax />
+                                </h:commandLink>
+                            </div>
+                        </p:column>
                     </p:dataTable>
                 </div>
                 <iars:delete workingId="delete-task" idsToRender="tasks_table"
                              listener="#{taskBean.deleteTask()}">
                 </iars:delete>
+                <ui:include src="/snippets/modals/view_task-modal.xhtml" />
+                <ui:include src="/snippets/modals/result_task-modal.xhtml" />
             </h:form>
         </ui:define>
 

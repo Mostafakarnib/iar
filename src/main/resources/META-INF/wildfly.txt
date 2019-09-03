@@ -1,6 +1,6 @@
 
-                <datasource jta="true" jndi-name="java:jboss/iar_ds" pool-name="iar_ds" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:mysql://localhost:3306/iar</connection-url>
+                <datasource jta="true" jndi-name="java:jboss/pircs_ds" pool-name="pircs_ds" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:mysql://localhost:3306/pircs</connection-url>
                     <driver>mysql</driver>
                     <security>
                         <user-name>root</user-name>
@@ -24,10 +24,10 @@
                     </statement>
                 </datasource>
 
-<security-domain name="iar-realm" cache-type="default">
+<security-domain name="pircs-realm" cache-type="default">
                     <authentication>
                         <login-module code="Database" flag="required">
-                            <module-option name="dsJndiName" value="java:jboss/iar_ds"/>
+                            <module-option name="dsJndiName" value="java:jboss/pircs_ds"/>
                             <module-option name="unauthenticatedIdentity" value="anonymous"/>
                             <module-option name="hashAlgorithm" value="SHA-256"/>
                             <module-option name="hashEncoding" value="hex"/>
@@ -37,7 +37,7 @@
                     </authentication>
                     <authorization>
                         <policy-module code="Database" flag="required">
-                            <module-option name="dsJndiName" value="java:jboss/iar_ds"/>
+                            <module-option name="dsJndiName" value="java:jboss/pircs_ds"/>
                             <module-option name="rolesQuery" value="SELECT col_role,'Roles' FROM tbl_operator WHERE col_username=?"/>
                             <module-option name="hashAlgorithm" value="SHA-256"/>
                             <module-option name="hashEncoding" value="hex"/>
