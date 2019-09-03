@@ -22,14 +22,9 @@ import org.pirlo.enums.ToasterEnum;
 import org.pirlo.facades.OperatorFacade;
 import org.pirlo.utils.Utils;
 
-/**
- *
- * @author  < at gmail.com>
- */
 @ManagedBean
 @SessionScoped
-public class LoginBean implements Serializable
-{
+public class LoginBean implements Serializable {
 
     @ManagedProperty(value = "#{utilityBean}")
     UtilityBean utilityBean;
@@ -46,42 +41,35 @@ public class LoginBean implements Serializable
     String originalURL;
 
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
         originalURL = (String) externalContext.getRequestMap().get(
                 RequestDispatcher.FORWARD_REQUEST_URI);
 
-        if (originalURL == null)
-        {
+        if (originalURL == null) {
             originalURL = externalContext.getRequestContextPath() + "/home.xhtml";
-        } else
-        {
+        } else {
             String originalQuery = (String) externalContext.getRequestMap()
                     .get(RequestDispatcher.FORWARD_QUERY_STRING);
 
-            if (originalQuery != null)
-            {
+            if (originalQuery != null) {
                 originalURL += "?" + originalQuery;
             }
         }
     }
 
-    public void login()
-    {
+    public void login() {
 
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext
                 .getRequest();
 
-        try
-        {
+        try {
             operator = operatorFacade.getOperatorByUsername(username);
 
-            if (operator == null)
-            {
+            if (operator == null) {
                 context.addMessage(null, new FacesMessage("Wrong username or password"));
                 return;
             }
@@ -90,8 +78,7 @@ public class LoginBean implements Serializable
             request.login(username, password);
             RoleEnum role = operator.getRole();
             //OperatorTypeEnum type = operator.getType();
-            switch (role)
-            {
+            switch (role) {
                 case ROOT:
                     pageUrl = pageUrl + "pirlo/hospitals.xhtml";
                     break;
@@ -104,129 +91,104 @@ public class LoginBean implements Serializable
             }
 
             externalContext.redirect(externalContext.getRequestContextPath() + pageUrl);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             context.addMessage(null, new FacesMessage("Wrong username or password"));
         }
     }
 
-    public void logout()
-    {
-        try
-        {
+    public void logout() {
+        try {
             operator = null;
             pwd1 = "";
             pwd2 = "";
             ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
             ec.invalidateSession();
             ec.redirect(ec.getRequestContextPath() + "/login/login.xhtml");
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             //utilityBean.showToastr(e.getMessage(), Toaster.error.name());
         }
     }
 
-    public void changePassword()
-    {
-        try
-        {
-            if (pwd1 == null ? pwd2 == null : pwd1.equals(pwd2))
-            {
+    public void changePassword() {
+        try {
+            if (pwd1 == null ? pwd2 == null : pwd1.equals(pwd2)) {
                 operator.setPassword(Utils.convertToSHA256(pwd1));
                 operator = operatorFacade.save(operator);
                 operator = operatorFacade.refresh(operator);
                 pwd1 = "";
                 pwd2 = "";
                 utilityBean.hideModal("password-dlg");
-            } else
-            {
+            } else {
                 utilityBean.showToastr("Passwords do not match!", ToasterEnum.error.name());
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public UtilityBean getUtilityBean()
-    {
+    public UtilityBean getUtilityBean() {
         return utilityBean;
     }
 
-    public void setUtilityBean(UtilityBean utilityBean)
-    {
+    public void setUtilityBean(UtilityBean utilityBean) {
         this.utilityBean = utilityBean;
     }
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password)
-    {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getOriginalURL()
-    {
+    public String getOriginalURL() {
         return originalURL;
     }
 
-    public void setOriginalURL(String originalURL)
-    {
+    public void setOriginalURL(String originalURL) {
         this.originalURL = originalURL;
     }
 
-    public OperatorFacade getOperatorFacade()
-    {
+    public OperatorFacade getOperatorFacade() {
         return operatorFacade;
     }
 
-    public void setOperatorFacade(OperatorFacade operatorFacade)
-    {
+    public void setOperatorFacade(OperatorFacade operatorFacade) {
         this.operatorFacade = operatorFacade;
     }
 
-    public Operator getOperator()
-    {
+    public Operator getOperator() {
         return operator;
     }
 
-    public void setOperator(Operator operator)
-    {
+    public void setOperator(Operator operator) {
         this.operator = operator;
     }
 
-    public String getPwd1()
-    {
+    public String getPwd1() {
         return pwd1;
     }
 
-    public void setPwd1(String pwd1)
-    {
+    public void setPwd1(String pwd1) {
         this.pwd1 = pwd1;
     }
 
-    public String getPwd2()
-    {
+    public String getPwd2() {
         return pwd2;
     }
 
-    public void setPwd2(String pwd2)
-    {
+    public void setPwd2(String pwd2) {
         this.pwd2 = pwd2;
     }
 
