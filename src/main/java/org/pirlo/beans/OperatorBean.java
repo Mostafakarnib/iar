@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import org.omnifaces.util.Ajax;
 import org.pirlo.entities.Operator;
 import org.pirlo.enums.RoleEnum;
 import org.pirlo.enums.ToasterEnum;
@@ -42,27 +43,29 @@ public class OperatorBean implements Serializable {
     }
 
     public void saveOperator() {
-        if (operator.getId() == null) {
-            try {
-                operator.setPassword(Utils.convertToSHA256(operator.getPassword()));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            operator.setRole(RoleEnum.USER);
-        }
-        operator.setHospital(loginBean.operator.getHospital());
-
         boolean check = false;
-        if (operator.getId() == null) {
-            check = true;
-        }
         if (operator.getEmail().matches("(^(.+)@(.+)$)")) {
+            if (operator.getId() == null) {
+                check = true;
+                try {
+                    operator.setPassword(Utils.convertToSHA256(operator.getPassword()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                operator.setRole(RoleEnum.USER);
+            }
+            operator.setHospital(loginBean.operator.getHospital());
             operator = operatorFacade.save(operator);
             if (check) {
                 operatorList.add(operator);
             }
             utilityBean.hideModal("operator-dlg");
+        } else {
+            String toast = "showToastr('Email format Invalid!','warn ','500')";
+            Ajax.oncomplete(toast);
+//            utilityBean.showToastr("Email format Invalid!", ToasterEnum.warn.name());
         }
+
     }
 
     public void selectOperator(Operator tmpOperator) {

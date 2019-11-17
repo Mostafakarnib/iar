@@ -27,8 +27,7 @@ import org.pirlo.utils.Utils;
 
 @ManagedBean
 @ApplicationScoped
-public class UtilityBean implements Serializable
-{
+public class UtilityBean implements Serializable {
 
     @Resource(name = "java:jboss/mail/gmail")
     Session session;
@@ -47,8 +46,7 @@ public class UtilityBean implements Serializable
     List<SelectItem> ticketStatusEnum = new ArrayList<>();
 
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         refreshEnumsList();
 
         tmpList.add("testing_ticket1");
@@ -56,8 +54,7 @@ public class UtilityBean implements Serializable
         tmpList.add("testing_ticket3");
     }
 
-    public void refreshEnumsList()
-    {
+    public void refreshEnumsList() {
         occupationalStatusList.clear();
         iaTypeList.clear();
         iaCategoryList.clear();
@@ -68,83 +65,64 @@ public class UtilityBean implements Serializable
         taskStatusList.clear();
         ticketStatusEnum.clear();
 
-        for (OccupationStatusEnum type : OccupationStatusEnum.values())
-        {
+        for (OccupationStatusEnum type : OccupationStatusEnum.values()) {
             occupationalStatusList.add(new SelectItem(type, Utils.getMessageFromBundle(type.name())));
         }
 
-        for (IATypeEnum type : IATypeEnum.values())
-        {
+        for (IATypeEnum type : IATypeEnum.values()) {
             iaTypeList.add(new SelectItem(type, Utils.getMessageFromBundle(type.name())));
         }
 
-        for (IACategoryEnum type : IACategoryEnum.values())
-        {
+        for (IACategoryEnum type : IACategoryEnum.values()) {
             iaCategoryList.add(new SelectItem(type, Utils.getMessageFromBundle(type.name())));
         }
-        for (MEEnum type : MEEnum.values())
-        {
+        for (MEEnum type : MEEnum.values()) {
             meEnumList.add(new SelectItem(type, Utils.getMessageFromBundle(type.name())));
         }
-        for (METypeEnum type : METypeEnum.values())
-        {
+        for (METypeEnum type : METypeEnum.values()) {
             meTypeEnumList.add(new SelectItem(type, Utils.getMessageFromBundle(type.name())));
         }
-        for (OperatorTypeEnum type : OperatorTypeEnum.values())
-        {
+        for (OperatorTypeEnum type : OperatorTypeEnum.values()) {
             operatorTypeEnumList.add(new SelectItem(type, Utils.getMessageFromBundle(type.name())));
         }
 
-        for (LangEnum item : LangEnum.values())
-        {
+        for (LangEnum item : LangEnum.values()) {
             langList.add(new SelectItem(item, Utils.getMessageFromBundle(item.name())));
         }
-        for (TaskStatusEnum status : TaskStatusEnum.values())
-        {
+        for (TaskStatusEnum status : TaskStatusEnum.values()) {
             taskStatusList.add(new SelectItem(status, Utils.getMessageFromBundle(status.name())));
         }
-        for (TicketStatusEnum status : TicketStatusEnum.values())
-        {
+        for (TicketStatusEnum status : TicketStatusEnum.values()) {
             ticketStatusEnum.add(new SelectItem(status, Utils.getMessageFromBundle(status.name())));
         }
     }
 
-    public String getColorClass(int index)
-    {
+    public String getColorClass(int index) {
         String classString = "";
 
         index++;
 
-        if (index % 3 == 0)
-        {
+        if (index % 3 == 0) {
             classString = "default";
-        } else if (index % 4 == 0)
-        {
+        } else if (index % 4 == 0) {
             classString = "warning";
-        } else if (index % 5 == 0)
-        {
+        } else if (index % 5 == 0) {
             classString = "success";
-        } else if (index % 2 == 0)
-        {
+        } else if (index % 2 == 0) {
             classString = "danger";
-        } else if (index % 1 == 0)
-        {
+        } else if (index % 1 == 0) {
             classString = "primary";
         }
 
         return classString;
     }
 
-    public void sendEmail(final String messageSubject, final String messageText, final String recieverEmail)
-    {
+    public void sendEmail(final String messageSubject, final String messageText, final String recieverEmail) {
         Thread msgThread = new Thread(
-                new Runnable()
-        {
+                new Runnable() {
             @Override
-            public void run()
-            {
-                try
-                {
+            public void run() {
+                try {
                     System.out.println("Sending messageSubject " + messageSubject);
                     System.out.println("Sending messageText " + messageText);
                     System.out.println("Sending recieverEmail " + recieverEmail);
@@ -153,8 +131,7 @@ public class UtilityBean implements Serializable
                     message.setSubject(messageSubject);
                     message.setText(messageText);
                     Transport.send(message);
-                } catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -162,120 +139,97 @@ public class UtilityBean implements Serializable
         msgThread.start();
     }
 
-    public void showModal(String modalid)
-    {
+    public void showModal(String modalid) {
         Ajax.oncomplete("$('." + modalid + "').modal('show');");
     }
 
-    public void hideModal(String modalid)
-    {
+    public void hideModal(String modalid) {
         Ajax.oncomplete("$('." + modalid + "').modal('hide');");
     }
 
-    public void showToastr(String description, String type)
-    {
+    public void showToastr(String description, String type) {
         String toast = "showToastr('" + description + "','" + type + "','" + toastrTimeout + "');";
         System.out.println(toast);
         Ajax.oncomplete(toast);
     }
 
-    public List<SelectItem> getOperatorTypeEnumList()
-    {
+    public List<SelectItem> getOperatorTypeEnumList() {
         return operatorTypeEnumList;
     }
 
-    public void setOperatorTypeEnumList(List<SelectItem> operatorTypeEnumList)
-    {
+    public void setOperatorTypeEnumList(List<SelectItem> operatorTypeEnumList) {
         this.operatorTypeEnumList = operatorTypeEnumList;
     }
 
-    public List<SelectItem> getOccupationalStatusList()
-    {
+    public List<SelectItem> getOccupationalStatusList() {
         return occupationalStatusList;
     }
 
-    public void setOccupationalStatusList(List<SelectItem> occupationalStatusList)
-    {
+    public void setOccupationalStatusList(List<SelectItem> occupationalStatusList) {
         this.occupationalStatusList = occupationalStatusList;
     }
 
-    public List<SelectItem> getIaTypeList()
-    {
+    public List<SelectItem> getIaTypeList() {
         return iaTypeList;
     }
 
-    public void setIaTypeList(List<SelectItem> iaTypeList)
-    {
+    public void setIaTypeList(List<SelectItem> iaTypeList) {
         this.iaTypeList = iaTypeList;
     }
 
-    public List<SelectItem> getIaCategoryList()
-    {
+    public List<SelectItem> getIaCategoryList() {
         return iaCategoryList;
     }
 
-    public void setIaCategoryList(List<SelectItem> iaCategoryList)
-    {
+    public void setIaCategoryList(List<SelectItem> iaCategoryList) {
         this.iaCategoryList = iaCategoryList;
     }
 
-    public List<SelectItem> getMeEnumList()
-    {
+    public List<SelectItem> getMeEnumList() {
         return meEnumList;
     }
 
-    public void setMeEnumList(List<SelectItem> meEnumList)
-    {
+    public void setMeEnumList(List<SelectItem> meEnumList) {
         this.meEnumList = meEnumList;
     }
 
-    public List<SelectItem> getMeTypeEnumList()
-    {
+    public List<SelectItem> getMeTypeEnumList() {
         return meTypeEnumList;
     }
 
-    public void setMeTypeEnumList(List<SelectItem> meTypeEnumList)
-    {
+    public void setMeTypeEnumList(List<SelectItem> meTypeEnumList) {
         this.meTypeEnumList = meTypeEnumList;
     }
 
-    public List<String> getTmpList()
-    {
+    public List<String> getTmpList() {
         return tmpList;
     }
 
-    public void setTmpList(List<String> tmpList)
-    {
+    public void setTmpList(List<String> tmpList) {
         this.tmpList = tmpList;
     }
 
-    public List<SelectItem> getLangList()
-    {
+    public List<SelectItem> getLangList() {
         return langList;
     }
 
-    public void setLangList(List<SelectItem> langList)
-    {
+    public void setLangList(List<SelectItem> langList) {
         this.langList = langList;
     }
 
-    public List<SelectItem> getTaskStatusList()
-    {
+    public List<SelectItem> getTaskStatusList() {
         return taskStatusList;
     }
 
-    public void setTaskStatusList(List<SelectItem> taskStatusList)
-    {
+    public void setTaskStatusList(List<SelectItem> taskStatusList) {
         this.taskStatusList = taskStatusList;
     }
 
-    public List<SelectItem> getTicketStatusEnum()
-    {
+    public List<SelectItem> getTicketStatusEnum() {
         return ticketStatusEnum;
     }
 
-    public void setTicketStatusEnum(List<SelectItem> ticketStatusEnum)
-    {
+    public void setTicketStatusEnum(List<SelectItem> ticketStatusEnum) {
         this.ticketStatusEnum = ticketStatusEnum;
     }
 
